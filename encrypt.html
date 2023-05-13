@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encrypter</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <table>
+        <tr>
+          <td class="main">Encrypt</td>
+          <td><a href="decrypt.html">Decrypt</a></td>
+          <td><a href="CCvalidator.html">Credit Card Validator</a></td>
+          <td>
+            <a href="CCgenerator.html">Valid Credit Card Number Generator</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="parent">
+      <div class="input">
+        <h1>Encrypt</h1>
+        <h2>
+          Select your shift
+          <input
+            type="range"
+            name="shift"
+            id="shift"
+            min="1"
+            max="26"
+            oninput="updateRangeValue()"
+          />
+          <label for="shift" id="rangeValue">14</label>
+        </h2>
+        <textarea
+          name="userEncrypt"
+          id="userEncrypt"
+          cols="30"
+          rows="10"
+          placeholder="Add your encrypted message here"
+          oninput="encrypt()"
+        ></textarea>
+        <button class="copy" onclick="paste()">Paste from Clipboard</button>
+      </div>
+      <div class="output">
+        <h1>Output</h1>
+        <h2>Encrypted message</h2>
+        <textarea
+          name="output"
+          id="output"
+          cols="30"
+          rows="10"
+          placeholder="Output will be shown here"
+          disabled
+        ></textarea>
+        <button onclick="copytoClipboard()" class="copy">
+          Copy to clipboard
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

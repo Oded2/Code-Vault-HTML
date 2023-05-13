@@ -1,0 +1,191 @@
+* {
+  font-family: "Quicksand", sans-serif;
+}
+
+.header {
+  background-color: rgb(75, 75, 75);
+  color: white;
+  height: 5vh;
+}
+
+.header table {
+  table-layout: fixed;
+  width: 100%;
+  height: 100%;
+}
+.header table td {
+  text-align: center;
+  font-size: large;
+}
+
+.header a {
+  color: white;
+}
+
+.header a:hover {
+  color: lightgray;
+}
+
+td.main {
+  background-color: lightgray;
+  color: black;
+  font-weight: bold;
+}
+
+div.parent {
+  position: relative;
+  height: 90vh;
+}
+
+div.input {
+  float: left;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  height: 100%;
+  width: 50%;
+}
+
+div.input textarea {
+  font-family: "Montserrat", sans-serif;
+  height: 80%;
+  width: 90%;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 12px;
+  resize: none;
+  font-size: 16px;
+  border: 2px solid black;
+}
+
+div.input textarea:focus {
+  border: 3px solid black;
+}
+
+div.output {
+  float: right;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+  height: 100%;
+  width: 40%;
+}
+
+div.output textarea {
+  font-family: "Montserrat", sans-serif;
+  height: 80%;
+  width: 90%;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 12px;
+  resize: none;
+  font-size: 16px;
+  border: 2px solid black;
+  user-select: none;
+}
+
+.copy {
+  width: 90%;
+  height: 5%;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.copy:hover {
+  background-color: lightgray;
+}
+
+.copy:active {
+  background-color: darkgray;
+}
+
+div.validator {
+  float: left;
+  width: 50%;
+  height: 40%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+div.validator h1 {
+  text-align: center;
+}
+
+div.success {
+  float: right;
+  width: 40%;
+  height: 40%;
+  padding-left: 15px;
+  padding-right: 15px;
+  text-align: center;
+}
+
+div.validator input[type="number"] {
+  padding: 15px;
+  width: 400px;
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+div.validator input[type="number"]:focus {
+  background-color: rgb(243, 243, 243);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  appearance: none;
+}
+
+#validCheck {
+  color: red;
+}
+
+div.validatorChild {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+div.infoCard {
+  font-size: large;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  padding: 15px;
+  width: 90%;
+  height: 60%;
+  overflow: auto;
+}
+
+#card,
+#doubleCard {
+  letter-spacing: 4px;
+}
+
+button.generate {
+  margin: 0 auto;
+  border: 10px solid transparent;
+  background-color: rgb(235, 235, 235);
+  width: 200px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  padding: 0px;
+  font-family: "Montserrat";
+  transition: 0.1s;
+  cursor: pointer;
+  user-select: none;
+}
+
+button.generate:hover {
+  background-color: lightgray;
+}
+button.generate:active {
+  background-color: darkgrey;
+}
+
+.secondValidatorChild {
+  display: flex;
+  align-items: center;
+  height: 50%;
+}
