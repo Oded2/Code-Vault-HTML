@@ -189,3 +189,35 @@ button.generate:active {
   align-items: center;
   height: 50%;
 }
+
+div.homeParent {
+  height: 90vh;
+  width: 100vw;
+  max-width: 100%;
+}
+
+div.homeInfoLeft {
+  float: left;
+  font-family: "montserrat", sans-serif;
+  clear: both;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 40%;
+  width: 45%;
+  overflow: hidden;
+}
+
+div.homeParent a {
+  color: black;
+
+  font-family: "montserrat", sans-serif;
+}
+div.homeInfoLeft img {
+  height: 80%;
+}
+
+.homeInfoRight{
+  height: 40%;
+  width: 45%;
+  float: right;
+}
