@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Valid Credit Card Number Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="header">
+      <table>
+        <tr>
+          <td><a href="encrypt.html">Encrypt</a></td>
+          <td><a href="decrypt.html">Decrypt</a></td>
+          <td><a href="CCvalidator.html">Credit Card Validator</a></td>
+          <td class="main">Valid Credit Card Number Generator</td>
+        </tr>
+      </table>
+    </div>
+    <div class="parent">
+      <div class="validator">
+        <h1>Credit Card Number Generator</h1>
+        <h1>&nbsp</h1>
+        <div class="validatorChild">
+          <button class="generate" onclick="generateCard()">
+            Click to Generate
+          </button>
+        </div>
+      </div>
+      <div class="success">
+        <h1>Credit Card Number</h1>
+        <h1 id="output">Invalid</h1>
+        <button class="generate" onclick="copytoClipboard()">Copy</button>
+      </div>
+
+      <div class="infoCard">
+        <h2>How does this work?</h2>
+        <h3>
+          This method is called the Luhn algorithim, here is a demonstration of
+          how it works
+        </h3>
+        <h3>
+          First, take all the digits of your credit card, and double every
+          second digit from the right. If the digit is above 9, then you
+          subtract 9 from it.
+        </h3>
+        <h3>Digits of your card:</h3>
+        <h3 id="card"></h3>
+
+        <h3>
+          Every second digit from your card, starting from the right, doubled
+          and subtracted by 9 if it's over 9:
+        </h3>
+        <h3 id="doubleCard"></h3>
+        <h3>Take the sum of every digit, even the unchanged ones:</h3>
+        <h3 id="sumOfDigits"></h3>
+        <h3>
+          If the number is divisable by 10, then it's valid, otherwise it is
+          invalid.
+        </h3>
+      </div>
+    </div>
+  </body>
+</html>
