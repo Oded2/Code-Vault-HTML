@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", function () {
     generateCard();
   }
 });
-
 var abc = {
   a: 1,
   b: 2,
