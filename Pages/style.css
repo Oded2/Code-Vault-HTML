@@ -107,10 +107,13 @@ div.output textarea {
 }
 
 div.validator {
+  overflow: auto;
   float: left;
-  width: 50%;
-  height: 40%;
+  width: 40%;
+  height: 35%;
+  min-height: 150px;
   padding-left: 15px;
+
   padding-right: 15px;
 }
 
@@ -119,9 +122,11 @@ div.validator h1 {
 }
 
 div.success {
+  overflow: auto;
   float: right;
   width: 40%;
-  height: 40%;
+  height: 35%;
+  min-height: 150px;
   padding-left: 15px;
   padding-right: 15px;
   text-align: center;
@@ -146,20 +151,23 @@ input::-webkit-inner-spin-button {
   color: red;
 }
 
+
 div.validatorChild {
-  width: 100%;
+  max-width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
 }
 
+
 div.infoCard {
-  font-size: large;
-  margin: auto;
   position: absolute;
   bottom: 0;
+  font-size: large;
+  margin: auto;
   padding: 15px;
   width: 90%;
-  height: 60%;
+
   overflow: auto;
 }
 
