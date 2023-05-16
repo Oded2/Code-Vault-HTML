@@ -253,3 +253,14 @@ function generateCard() {
   document.getElementById("doubleCard").innerHTML = z;
   document.getElementById("sumOfDigits").innerHTML = sum;
 }
+
+function getFileName() {
+  let fileInput = document.getElementById("metaIMG");
+  let span = document.getElementById("fileName");
+
+  let fileName = fileInput.files[0].name;
+  span.innerText = fileName;
+
+
+}
+

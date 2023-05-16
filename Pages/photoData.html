@@ -27,8 +27,9 @@
         <div class="metaMain">
             <h1>Metadata Viewer</h1>
             <h2>Upload photo</h2>
-            <input type="file" name="metaIMG" id="metaIMG" accept="image/*">
-            <label for="metaIMG" id="metaLabel">Browse</label>
+            <input type="file" name="metaIMG" id="metaIMG" accept="image/*" onchange="getFileName()">
+            <label for="metaIMG" id="metaLabel" >Choose a file</label>
+            <h3 id="fileName">No file chosen</h3>
         </div>
     </div>
   </body>

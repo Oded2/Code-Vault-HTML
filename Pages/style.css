@@ -16,7 +16,6 @@
   table-layout: fixed;
   width: 100%;
   height: 100%;
-
 }
 .header table td {
   text-align: center;
@@ -32,7 +31,6 @@
 }
 
 td.main {
-
   background-color: lightgray;
   color: black;
   font-weight: bold;
@@ -151,15 +149,12 @@ input::-webkit-inner-spin-button {
   color: red;
 }
 
-
 div.validatorChild {
-
   max-width: 100%;
   width: 100vw;
   display: flex;
   justify-content: center;
 }
-
 
 div.infoCard {
   position: relative;
@@ -228,9 +223,9 @@ div.homeParent a {
   font-family: "montserrat", sans-serif;
 }
 div.homeInfoLeft img {
-  transition: .5s;
+  transition: 0.5s;
   border-radius: 10px;
-  
+
   height: 65%;
 }
 div.homeInfoLeft img:hover {
@@ -245,30 +240,39 @@ div.homeInfoLeft img:hover {
   float: right;
 }
 
-.homeCredit{
+.homeCredit {
   color: orange;
 }
 
-
-div.metaMain{
+div.metaMain {
+  padding: 15px;
   border: 5px dashed red;
   height: 40%;
   width: 40%;
 }
 
-div.metaMain input[type=file]{
-
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;  
+div.metaMain input[type="file"] {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 }
-#metaIMG, #metaLabel{
+#metaIMG,
+#metaLabel {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+padding: 12px;
+  cursor: pointer;
   font-size: 1.25em;
   font-weight: bold;
-  color:white;
+  color: white;
   background-color: black;
   display: inline-block;
+}
+#metaIMG:focus,
+#metaIMG,
+#metaLabel:hover {
+  background-color: orange;
 }
