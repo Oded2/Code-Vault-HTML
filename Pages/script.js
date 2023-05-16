@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.title == "Credit Card Generator") {
+  var title = document.title;
+  if (title == "Credit Card Generator") {
     generateCard();
   }
 });
@@ -32,7 +33,7 @@ var abc = {
   z: 26,
 };
 
-var title = document.title;
+
 
 function updateRangeValue() {
   var rangeValue = document.getElementById("shift").value;
