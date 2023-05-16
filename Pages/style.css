@@ -111,7 +111,7 @@ div.validator {
   float: left;
   width: 40%;
   height: 35%;
-  min-height: 150px;
+  min-height: 350px;
   padding-left: 15px;
 
   padding-right: 15px;
@@ -153,6 +153,7 @@ input::-webkit-inner-spin-button {
 
 
 div.validatorChild {
+
   max-width: 100%;
   width: 100vw;
   display: flex;
@@ -161,8 +162,7 @@ div.validatorChild {
 
 
 div.infoCard {
-  position: absolute;
-  bottom: 0;
+  position: relative;
   font-size: large;
   margin: auto;
   padding: 15px;
@@ -199,9 +199,10 @@ button.generate:active {
 }
 
 .secondValidatorChild {
+  margin-top: 20px;
   display: flex;
   align-items: center;
-  height: 50%;
+  height: 10%;
 }
 
 div.homeParent {
