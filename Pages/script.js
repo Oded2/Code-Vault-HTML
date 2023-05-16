@@ -1,9 +1,10 @@
+var title = document.title;
 document.addEventListener("DOMContentLoaded", function () {
-  var title = document.title;
   if (title == "Credit Card Generator") {
     generateCard();
   }
 });
+
 var abc = {
   a: 1,
   b: 2,
@@ -32,8 +33,6 @@ var abc = {
   y: 25,
   z: 26,
 };
-
-
 
 function updateRangeValue() {
   var rangeValue = document.getElementById("shift").value;
