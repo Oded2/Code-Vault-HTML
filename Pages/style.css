@@ -245,9 +245,9 @@ div.homeInfoLeft img:hover {
 }
 
 div.metaMain {
+  float: left;
   padding: 15px;
-  border: 5px dashed red;
-  height: 40%;
+  height: 90%;
   width: 40%;
 }
 
@@ -275,4 +275,26 @@ padding: 12px;
 #metaIMG,
 #metaLabel:hover {
   background-color: orange;
+}
+
+div.imgHolder{
+  height: 90%;
+  min-height: 500px;
+  width: 50%;
+  min-width: 500px;
+  float: right;
+
+}
+
+#userIMG{
+  float: right;
+  height: 500px;
+  width: 50%;
+  height: 100%;
+object-fit:contain;
+}
+div.dataInfo{
+  float: left;
+  height: 100%;
+  width: 40%;
 }

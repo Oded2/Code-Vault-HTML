@@ -260,7 +260,23 @@ function getFileName() {
 
   let fileName = fileInput.files[0].name;
   span.innerText = fileName;
-
-
 }
 
+function loadFile(event) {
+  getFileName();
+  var image = document.getElementById("userIMG");
+  image.src = URL.createObjectURL(event.target.files[0]);
+}
+
+function getExif() {
+  var make = document.getElementById("dataMake");
+  var model = document.getElementById("dataModel");
+  var resolution = document.getElementById("dataResolution");
+  console.log("Getting exif");
+  var img1 = document.getElementById("userIMG");
+  EXIF.getData(img1, function () {
+    var MetaData = EXIF.getAllTags(this);
+    make.innerHTML = "Make: " + MetaData["Make"];
+    model.innerHTML = "Model: " + MetaData["Model"];
+  });
+}
