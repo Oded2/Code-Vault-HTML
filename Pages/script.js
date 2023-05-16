@@ -184,27 +184,6 @@ function verifyCard() {
   }
 }
 
-function doubleCardDemo(card) {
-  var start = 1;
-  card = reverseString(card);
-  var finishedCard = "";
-  for (var i in card) {
-    var p = card[i];
-
-    if (start % 2 == 0) {
-      p = p * 2;
-      if (p > 9) {
-        p -= 9;
-      }
-      finishedCard += p;
-    } else [(finishedCard += p)];
-    start += 1;
-  }
-
-  finishedCard = reverseString(finishedCard);
-  return finishedCard;
-}
-
 function verifyCardAny(card) {
   card = reverseString(card);
   var start = 1;
@@ -231,6 +210,27 @@ function verifyCardAny(card) {
     valid = false;
   }
   return valid;
+}
+
+function doubleCardDemo(card) {
+  var start = 1;
+  card = reverseString(card);
+  var finishedCard = "";
+  for (var i in card) {
+    var p = card[i];
+
+    if (start % 2 == 0) {
+      p = p * 2;
+      if (p > 9) {
+        p -= 9;
+      }
+      finishedCard += p;
+    } else [(finishedCard += p)];
+    start += 1;
+  }
+
+  finishedCard = reverseString(finishedCard);
+  return finishedCard;
 }
 
 function generateCard() {

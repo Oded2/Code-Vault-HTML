@@ -228,6 +228,14 @@ div.homeParent a {
   font-family: "montserrat", sans-serif;
 }
 div.homeInfoLeft img {
+  transition: .5s;
+  border-radius: 10px;
+  
+  height: 65%;
+}
+div.homeInfoLeft img:hover {
+  border-radius: 5px;
+
   height: 65%;
 }
 
@@ -241,3 +249,26 @@ div.homeInfoLeft img {
   color: orange;
 }
 
+
+div.metaMain{
+  border: 5px dashed red;
+  height: 40%;
+  width: 40%;
+}
+
+div.metaMain input[type=file]{
+
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;  
+}
+#metaIMG, #metaLabel{
+  font-size: 1.25em;
+  font-weight: bold;
+  color:white;
+  background-color: black;
+  display: inline-block;
+}
