@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.title == "Valid Credit Card Number Generator") {
+  if (document.title == "Credit Card Generator") {
     generateCard();
   }
 });
