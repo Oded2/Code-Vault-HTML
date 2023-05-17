@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+
 var abc = {
   a: 1,
   b: 2,
@@ -269,14 +270,17 @@ function loadFile(event) {
 }
 
 function getExif() {
+  
   var make = document.getElementById("dataMake");
   var model = document.getElementById("dataModel");
   var resolution = document.getElementById("dataResolution");
-  console.log("Getting exif");
   var img1 = document.getElementById("userIMG");
   EXIF.getData(img1, function () {
-    var MetaData = EXIF.getAllTags(this);
-    make.innerHTML = "Make: " + MetaData["Make"];
-    model.innerHTML = "Model: " + MetaData["Model"];
+    var metadata = EXIF.getAllTags(this);
+    console.log(this);
+    document.getElementById("dataMake").innerHTML = "Make: " + metadata["Make"];
+    document.getElementById("dataModel").innerHTML = "Model: " + metadata["Model"];
+    resolution.innerHTML = "Resolution: " + metadata["PixelYDimension"] + " x " + metadata["PixelXDimension"];
   });
 }
+

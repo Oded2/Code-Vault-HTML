@@ -26,9 +26,9 @@
     </div>
     <div class="parent">
         <div class="metaMain">
-            <h1>Metadata Viewer</h1>
+            <h1>Metadata Viewer *WORK IN PROGRESS*</h1>
             <h2>Upload photo</h2>
-            <input type="file" name="metaIMG" id="metaIMG" accept="image/*" onchange="loadFile(event)" onsubmit="getExif()">
+            <input type="file" name="metaIMG" id="metaIMG" accept="image/*" onchange="loadFile(event)">
             <label for="metaIMG" id="metaLabel" >Choose a file</label>
             <h3 id="fileName"></h3>
 
@@ -36,14 +36,14 @@
         <div class="imgHolder" id="imgHolder">
           <div class="dataInfo">
 
-            <h3 id="dataMake"></h3>
+            <h3 id="dataMake">hi</h3>
             <h3 id="dataModel"></h3>
             <h3 id="dataResolution"></h3>
           </div>
           <img src="Images/Transparent.png" id="userIMG">
 
         </div>
-        <button onclick="getExif()">Reload</button>
+        <button onclick="getExif()">Show exif data</button>
     </div>
   </body>
 </html>
