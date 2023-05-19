@@ -7,7 +7,7 @@
     <title>Metadata Viewer</title>
     <link rel="stylesheet" href="style.css" />
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/exif-js"></script>
+    <script src="Assets/exif.js"></script>
   </head>
   <body>
     <div class="header">
@@ -36,14 +36,12 @@
         <div class="imgHolder" id="imgHolder">
           <div class="dataInfo">
 
-            <h3 id="dataMake">hi</h3>
-            <h3 id="dataModel"></h3>
+            <h3 id="Make"></h3>
+            <h3 id="Model"></h3>
             <h3 id="dataResolution"></h3>
           </div>
           <img src="Images/Transparent.png" id="userIMG">
-
         </div>
-        <button onclick="getExif()">Show exif data</button>
     </div>
   </body>
 </html>

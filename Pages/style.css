@@ -207,6 +207,7 @@ div.homeParent {
 }
 
 div.homeInfoLeft {
+
   float: left;
   font-family: "montserrat", sans-serif;
   clear: both;
@@ -225,7 +226,6 @@ div.homeParent a {
 div.homeInfoLeft img {
   transition: 0.5s;
   border-radius: 10px;
-
   height: 65%;
 }
 div.homeInfoLeft img:hover {

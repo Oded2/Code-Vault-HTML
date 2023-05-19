@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-
 var abc = {
   a: 1,
   b: 2,
@@ -267,20 +266,31 @@ function loadFile(event) {
   getFileName();
   var image = document.getElementById("userIMG");
   image.src = URL.createObjectURL(event.target.files[0]);
-}
-
-function getExif() {
-  
-  var make = document.getElementById("dataMake");
-  var model = document.getElementById("dataModel");
-  var resolution = document.getElementById("dataResolution");
-  var img1 = document.getElementById("userIMG");
-  EXIF.getData(img1, function () {
-    var metadata = EXIF.getAllTags(this);
-    console.log(this);
-    document.getElementById("dataMake").innerHTML = "Make: " + metadata["Make"];
-    document.getElementById("dataModel").innerHTML = "Model: " + metadata["Model"];
-    resolution.innerHTML = "Resolution: " + metadata["PixelYDimension"] + " x " + metadata["PixelXDimension"];
+  image.addEventListener("load", function () {
+    getExif();
+    document.getElementById("dataResolution").innerHTML =
+      "Resolution: " + image.naturalWidth + " x " + image.naturalHeight;
   });
 }
 
+function temp() {
+  var metadata = EXIF.getAllTags(this);
+  for (var i in metadata) {
+    if (metadata[i] == null) {
+      metadata[i] == "";
+    } else {
+      try {
+        document.getElementById(i).innerHTML = i + ": " + metadata[i];
+      } catch (error) {}
+    }
+  }
+  // document.getElementById("dataMake").innerHTML = "Make: " + metadata["Make"];
+  // document.getElementById("dataModel").innerHTML =
+  //   "Model: " + metadata["Model"];
+}
+
+function getExif() {
+  var img1 = document.getElementById("userIMG");
+
+  EXIF.getData(img1, temp);
+}
