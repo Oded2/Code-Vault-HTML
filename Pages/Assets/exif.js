@@ -1,4 +1,4 @@
-//Code written by: https://github.com/exif-js/exif-js
+//Code by: https://github.com/exif-js/exif-js
 (function () {
   var debug = false;
 
