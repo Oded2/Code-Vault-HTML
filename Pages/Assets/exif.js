@@ -1,4 +1,4 @@
-//Code not written by me, click on this link https://github.com/exif-js/exif-js
+//Code written by: https://github.com/exif-js/exif-js
 (function () {
   var debug = false;
 
