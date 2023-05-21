@@ -49,7 +49,6 @@ function processEXIF() {
       latSecond,
       latDirection
     );
-    console.debug(latFinal, lonFinal);
     const finalLocation = createMapEmbedLink(latFinal, lonFinal);
 
     let flash = EXIF.getTag(this, "Flash");
