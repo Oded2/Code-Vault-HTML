@@ -261,6 +261,7 @@ div.metaMain input[type="file"] {
 }
 #metaIMG,
 #metaLabel {
+
   outline: 1px dotted #000;
   outline: -webkit-focus-ring-color auto 5px;
 padding: 12px;
@@ -274,6 +275,7 @@ padding: 12px;
 #metaIMG:focus,
 #metaIMG,
 #metaLabel:hover {
+  transition: .1s;
   background-color: orange;
 }
 
@@ -285,10 +287,14 @@ div.imgHolder{
   float: right;
 
 }
+div.imgHolder img{
+  margin-right: 10%;
+
+}
 
 #userIMG{
   float: right;
-  height: 500px;
+  min-height: 500px;
   width: 50%;
   height: 100%;
 object-fit:contain;
@@ -297,4 +303,17 @@ div.dataInfo{
   float: left;
   height: 100%;
   width: 40%;
+}
+div.maps{
+  margin: auto;
+  height: 70%;
+  width:100%;
+}
+
+
+
+
+div.maps iframe{
+  height: 100%;
+  width: 100%;
 }
