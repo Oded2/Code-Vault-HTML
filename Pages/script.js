@@ -45,9 +45,13 @@ function updateRangeValue() {
 }
 
 function encrypt() {
-  var result = "";
   var message = document.getElementById("userEncrypt").value;
   var shift = parseInt(document.getElementById("shift").value);
+
+  document.getElementById("output").innerHTML = encryptAny(message, shift);
+}
+function encryptAny(message, shift) {
+  var result = "";
   var e = null;
   for (var i of message) {
     var isLetter = /[a-zA-Z]/.test(i);
@@ -73,12 +77,18 @@ function encrypt() {
     }
     result += e;
   }
-  document.getElementById("output").innerHTML = result;
+  return result;
 }
+
 function decrypt() {
-  var result = "";
   var message = document.getElementById("userDecrypt").value;
   var shift = parseInt(document.getElementById("shift").value);
+  document.getElementById("output").innerHTML = decryptAny(message, shift);
+}
+
+function decryptAny(message, shift) {
+  var result = "";
+
   var e = null;
   for (var i of message) {
     var isLetter = /[a-zA-Z]/.test(i);
@@ -104,7 +114,7 @@ function decrypt() {
     }
     result += e;
   }
-  document.getElementById("output").innerHTML = result;
+  return result;
 }
 
 function copytoClipboard() {
