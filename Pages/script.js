@@ -36,7 +36,7 @@ var abc = {
 
 function updateRangeValue() {
   var rangeValue = document.getElementById("shift").value;
-  document.getElementById("rangeValue").innerHTML = rangeValue;
+  document.getElementById("rangeValue").innerText = rangeValue;
   if (title == "Encrypter") {
     encrypt();
   } else if (title == "Decrypter") {
@@ -48,7 +48,7 @@ function encrypt() {
   var message = document.getElementById("userEncrypt").value;
   var shift = parseInt(document.getElementById("shift").value);
 
-  document.getElementById("output").innerHTML = encryptAny(message, shift);
+  document.getElementById("output").innerText = encryptAny(message, shift);
 }
 function encryptAny(message, shift) {
   var result = "";
@@ -83,7 +83,7 @@ function encryptAny(message, shift) {
 function decrypt() {
   var message = document.getElementById("userDecrypt").value;
   var shift = parseInt(document.getElementById("shift").value);
-  document.getElementById("output").innerHTML = decryptAny(message, shift);
+  document.getElementById("output").innerText = decryptAny(message, shift);
 }
 
 function decryptAny(message, shift) {
@@ -141,8 +141,8 @@ function paste() {
         verifyCard();
       }
     })
-    .catch(() => {
-      alert("There was a problem copying from the clipboard");
+    .catch((error) => {
+      alert("There was a problem copying from the clipboard " + error);
     });
 }
 
@@ -154,9 +154,9 @@ function reverseString(str) {
 }
 function verifyCard() {
   var card = document.getElementById("cc").value;
-  document.getElementById("card").innerHTML = card;
+  document.getElementById("card").innerText = card;
   var doubledCard = doubleCardDemo(card);
-  document.getElementById("doubleCard").innerHTML = doubledCard;
+  document.getElementById("doubleCard").innerText = doubledCard;
   card = reverseString(card);
   var start = 1;
   var sum = 0;
@@ -176,7 +176,7 @@ function verifyCard() {
     start++;
   }
   if (sum != "NaN" && document.getElementById("cc") != "") {
-    document.getElementById("sumOfDigits").innerHTML = sum;
+    document.getElementById("sumOfDigits").innerText = sum;
   }
 
   if (sum % 10 == 0 && card != "" && /[a-zA-Z]/.test(card) == false) {
@@ -187,10 +187,10 @@ function verifyCard() {
 
   if (valid) {
     document.getElementById("validCheck").style.color = "green";
-    document.getElementById("validCheck").innerHTML = "Valid";
+    document.getElementById("validCheck").innerText = "Valid";
   } else {
     document.getElementById("validCheck").style.color = "red";
-    document.getElementById("validCheck").innerHTML = "Invalid";
+    document.getElementById("validCheck").innerText = "Invalid";
   }
 }
 
@@ -257,9 +257,9 @@ function generateCard() {
   for (var i in doubleCardDemo(number)) {
     sum += parseInt(doubleCardDemo(number)[i]);
   }
-  document.getElementById("output").innerHTML = number;
-  document.getElementById("card").innerHTML = number;
+  document.getElementById("output").innerText = number;
+  document.getElementById("card").innerText = number;
   var z = doubleCardDemo(number);
-  document.getElementById("doubleCard").innerHTML = z;
-  document.getElementById("sumOfDigits").innerHTML = sum;
+  document.getElementById("doubleCard").innerText = z;
+  document.getElementById("sumOfDigits").innerText = sum;
 }
