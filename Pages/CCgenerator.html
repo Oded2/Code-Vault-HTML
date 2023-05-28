@@ -11,20 +11,54 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="Assets/bootstrap.css" />
   </head>
   <body>
-    <div class="header">
-      <table>
-        <tr>
-          <td><a href="../index.html">Home</a></td>
-          <td><a href="encrypt.html">Encrypt</a></td>
-          <td><a href="decrypt.html">Decrypt</a></td>
-          <td><a href="CCvalidator.html">Credit Card Validator</a></td>
-          <td class="main">Credit Card Generator</td>
-          <td><a href="photoData.html">Metadata Viewer</a></td>
-        </tr>
-      </table>
-    </div>
+    <header class="p-3 text-bg-dark">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li>
+              <a href="../index.html" class="nav-link px-2 text-white">Home</a>
+            </li>
+
+            <li>
+              <a href="encrypt.html" class="nav-link px-2 text-white"
+                >Encrypt</a
+              >
+            </li>
+
+            <li>
+              <a href="decrypt.html" class="nav-link px-2 text-white"
+                >Decrypt</a
+              >
+            </li>
+
+            <li>
+              <a href="CCvalidator.html" class="nav-link px-2 text-white"
+                >Credit Card Validator</a
+              >
+            </li>
+            <li>
+              <a class="nav-link px-2 text-secondary">Credit Card Generator</a>
+            </li>
+            <li>
+              <a href="photoData.html" class="nav-link px-2 text-white"
+                >Metadata Viewer</a
+              >
+            </li>
+          </ul>
+
+          <div class="text-end">
+            <p>Made by Oded</p>
+          </div>
+        </div>
+      </div>
+    </header>
     <div class="parent">
       <div class="validator">
         <h1>Credit Card Number Generator</h1>

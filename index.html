@@ -6,17 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Oded's Random Projects</title>
     <link rel="stylesheet" href="Pages/style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="Pages/Assets/bootstrap.css" />
     <script src="Pages/script.js"></script>
-    <script
-      src="https://kit.fontawesome.com/1104f8a46a.js"
-      crossorigin="anonymous"
-    ></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap"
       rel="stylesheet"
@@ -24,7 +15,49 @@
   </head>
 
   <body>
-    <div class="header">
+    <header class="p-3 text-bg-dark">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li><a class="nav-link px-2 text-secondary">Home</a></li>
+            <li>
+              <a href="Pages/encrypt.html" class="nav-link px-2 text-white"
+                >Encrypt</a
+              >
+            </li>
+            <li>
+              <a href="Pages/decrypt.html" class="nav-link px-2 text-white"
+                >Decrypt</a
+              >
+            </li>
+            <li>
+              <a href="Pages/CCvalidator.html" class="nav-link px-2 text-white"
+                >Credit Card Validator</a
+              >
+            </li>
+            <li>
+              <a href="Pages/CCgenerator.html" class="nav-link px-2 text-white"
+                >Credit Card Generator</a
+              >
+            </li>
+            <li>
+              <a href="Pages/photoData.html" class="nav-link px-2 text-white"
+                >Metadata Viewer</a
+              >
+            </li>
+          </ul>
+
+          <div class="text-end">
+            <p>Made by Oded</p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- <div class="header">
       <table>
         <tr>
           <td class="main">Home</td>
@@ -37,7 +70,7 @@
           <td><a href="Pages/photoData.html">Metadata Viewer</a></td>
         </tr>
       </table>
-    </div>
+    </div> -->
 
     <div class="container px-4 py-5" id="hanging-icons">
       <h2 class="pb-2 border-bottom">Fun Projects</h2>
