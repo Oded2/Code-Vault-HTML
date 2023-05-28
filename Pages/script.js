@@ -263,3 +263,7 @@ function generateCard() {
   document.getElementById("doubleCard").innerText = z;
   document.getElementById("sumOfDigits").innerText = sum;
 }
+
+function contactMe() {
+  document.location.href = "mailto:odedconnect@gmail.com";
+}
