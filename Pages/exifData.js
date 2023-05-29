@@ -1,4 +1,5 @@
 let image = null;
+
 window.onload = () => {
   image = document.getElementById("userIMG");
   document.getElementById("metaIMG").onchange = loadFile;
@@ -6,7 +7,7 @@ window.onload = () => {
 
 function loadFile(event) {
   let file = event.target.files[0];
-  document.getElementById("fileName").innerText = file.name;
+  // document.getElementById("fileName").innerText = file.name;
   image.src = URL.createObjectURL(file);
   EXIF.getData(file, processEXIF);
 }

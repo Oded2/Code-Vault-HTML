@@ -175,7 +175,7 @@ function verifyCard() {
     }
     start++;
   }
-  if (sum != "NaN" && document.getElementById("cc") != "") {
+  if (sum.toString() != "NaN" && document.getElementById("cc") != "") {
     document.getElementById("sumOfDigits").innerText = sum;
   }
 
@@ -186,12 +186,18 @@ function verifyCard() {
   }
 
   if (valid) {
-    document.getElementById("validCheck").style.color = "green";
-    document.getElementById("validCheck").innerText = "Valid";
+    document.getElementById("validCheck").className =
+      "h-100 p-5 text-bg-success rounded-3";
+    document.getElementById("validCheckText").innerText = "Valid";
   } else {
-    document.getElementById("validCheck").style.color = "red";
-    document.getElementById("validCheck").innerText = "Invalid";
+    document.getElementById("validCheck").className =
+      "h-100 p-5 text-bg-danger rounded-3";
+    document.getElementById("validCheckText").innerText = "Invalid";
   }
+
+  leaveBlank(document.getElementById("sumOfDigits"));
+  leaveBlank(document.getElementById("card"));
+  leaveBlank(document.getElementById("doubleCard"));
 }
 
 function verifyCardAny(card) {
@@ -266,4 +272,10 @@ function generateCard() {
 
 function contactMe() {
   document.location.href = "mailto:odedconnect@gmail.com";
+}
+
+function leaveBlank(htmlID) {
+  if (htmlID.innerText.length == 0 || htmlID.innerText == "0") {
+    htmlID.innerHTML = "&nbsp;";
+  }
 }

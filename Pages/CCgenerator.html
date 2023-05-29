@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="Assets/bootstrap.css" />
   </head>
   <body>
-    <header class="p-3 text-bg-dark">
+    <header class="p-3 text-bg-dark test">
       <div class="container">
         <div
           class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
@@ -61,7 +61,70 @@
         </div>
       </div>
     </header>
-    <div class="parent">
+    <main>
+      <div class="container py-4">
+        <div class="row align-items-md-stretch">
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-dark rounded-3">
+              <h2>Generate a Credit Card</h2>
+              <p>For demo purposes only.</p>
+              <div
+                class="h-50 d-flex align-items-center justify-content-center"
+              >
+                <button class="btn btn-primary" onclick="generateCard()">
+                  Click to Generate
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="h-100 p-5 text-bg-secondary rounded-3" id="validCheck">
+              <h2 class="text-center">Credit Card Number</h2>
+              <h2 class="text-center" id="output"></h2>
+              <div
+                class="h-50 d-flex align-items-center justify-content-center"
+              >
+                <button class="btn btn-primary" onclick="copytoClipboard()">
+                  Copy to Clipboard
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+            <div class="container-fluid py-5">
+              <h1 class="display-5 fw-bold">How does this work?</h1>
+              <h3 class="col-md-8 fs-4">
+                <h4>
+                  This method is called the Luhn algorithim, here is a
+                  demonstration of how it works
+                </h4>
+                <h4>&nbsp;</h4>
+                <h4>
+                  First, take all the digits of your credit card, and double
+                  every second digit from the right. If the digit is above 9,
+                  then you subtract 9 from it.
+                </h4>
+                <h4>Digits of your card:</h4>
+                <h4 id="card">&nbsp;</h4>
+
+                <h4>
+                  Every second digit from your card, doubled, starting from the
+                  right and subtracted by 9 if it's over 9:
+                </h4>
+                <h4 id="doubleCard">&nbsp;</h4>
+                <h4>Take the sum of every digit, even the unchanged ones:</h4>
+                <h4 id="sumOfDigits">&nbsp;</h4>
+                <h4>
+                  If the number is divisable by 10, then it's valid, otherwise
+                  it is invalid.
+                </h4>
+              </h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- <div class="parent">
       <div class="validator">
         <h1>Credit Card Number Generator</h1>
         <h1>&nbsp</h1>
@@ -103,6 +166,6 @@
           invalid.
         </h3>
       </div>
-    </div>
+    </div> -->
   </body>
 </html>
