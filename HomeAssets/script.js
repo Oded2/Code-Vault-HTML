@@ -3,7 +3,7 @@ let body;
 
 document.addEventListener("DOMContentLoaded", function () {
   // TEMPORARY
-  location.href = "Fun Projects/index.html";
+  location.href = "fun-projects/index.html";
   body = document.getElementById("body");
   root = document.querySelector(":root");
   body.style.backgroundColor = "var(--body)";
