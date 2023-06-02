@@ -1,9 +1,10 @@
+// TEMPORARY
+location.href = "fun-projects/index.html";
+
 let root;
 let body;
 
 document.addEventListener("DOMContentLoaded", function () {
-  // TEMPORARY
-  location.href = "fun-projects/index.html";
   body = document.getElementById("body");
   root = document.querySelector(":root");
   body.style.backgroundColor = "var(--body)";
