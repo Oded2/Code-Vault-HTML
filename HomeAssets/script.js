@@ -1,5 +1,5 @@
 // TEMPORARY
-location.href = "fun-projects/index.html";
+location.href = "fun-projects/";
 
 let root;
 let body;
