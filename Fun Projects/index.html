@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Oded's Projects</title>
+    <link rel="stylesheet" href="Pages/Assets/bootstrap.css" />
+    <script src="Pages/script.js"></script>
+  </head>
+
+  <body>
+    <header class="p-3 text-bg-dark">
+      <div class="container">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        >
+          <ul
+            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li><a class="nav-link px-2 text-secondary">Home</a></li>
+            <li>
+              <a href="Pages/encrypt.html" class="nav-link px-2 text-white"
+                >Encrypt</a
+              >
+            </li>
+            <li>
+              <a href="Pages/decrypt.html" class="nav-link px-2 text-white"
+                >Decrypt</a
+              >
+            </li>
+            <li>
+              <a href="Pages/CCvalidator.html" class="nav-link px-2 text-white"
+                >Credit Card Validator</a
+              >
+            </li>
+            <li>
+              <a href="Pages/CCgenerator.html" class="nav-link px-2 text-white"
+                >Credit Card Generator</a
+              >
+            </li>
+            <li>
+              <a href="Pages/photoData.html" class="nav-link px-2 text-white"
+                >Metadata Viewer</a
+              >
+            </li>
+          </ul>
+
+          <div class="text-end">
+            <button type="button" class="btn btn-primary" onclick="contactMe()">
+              Contact Me
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="container px-4 py-5" id="hanging-icons">
+      <h2 class="pb-2 border-bottom">Fun Projects</h2>
+      <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+          ></div>
+          <div>
+            <h3 class="fs-2">Text Encrypter</h3>
+            <p>
+              Can encrypt any text, by switching up the letters based on your
+              selected shift. Does not change any numbers or special characters.
+              This method also keeps caps lock on. Very insecure, purely for
+              demo.
+            </p>
+            <a href="Pages/encrypt.html" class="btn btn-primary"> Show Me </a>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+          ></div>
+          <div>
+            <h3 class="fs-2">Text Decrypter</h3>
+            <p>
+              Will decrypt any text from the original encrypter above. Use the
+              same shift as the encrypted text and it will decrypt it.
+            </p>
+            <a href="Pages/decrypt.html" class="btn btn-primary"> Show Me </a>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+          ></div>
+          <div>
+            <h3 class="fs-2">Credit Card Validator</h3>
+            <p>
+              Will validate any credit card. The method used is called the Luhm
+              algorithim, and it will show you how it works. Does not store any
+              information, the entire process happens locally.
+            </p>
+            <a href="Pages/CCvalidator.html" class="btn btn-primary">
+              Show Me
+            </a>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+          ></div>
+          <div>
+            <h3 class="fs-2">Valid Credit Card Generator</h3>
+            <p>
+              Will generate any valid credit card. Will show you how the
+              algorithim is used. For demo purposes only.
+            </p>
+            <a href="Pages/CCgenerator.html" class="btn btn-primary">
+              Show Me
+            </a>
+          </div>
+        </div>
+        <div class="col d-flex align-items-start">
+          <div
+            class="icon-square text-body-emphasis bg-body-secondary d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3"
+          ></div>
+          <div>
+            <h3 class="fs-2">Metadata Viewer</h3>
+            <p>Will show you the metadata info of any photo</p>
+            <a href="Pages/CCgenerator.html" class="btn btn-primary">
+              Show Me
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
