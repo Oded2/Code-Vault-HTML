@@ -195,6 +195,12 @@ div.main {
   width: 100vw;
   max-width: 100%;
 }
+
+div.container a {
+  width: inherit;
+  height: inherit;
+}
+
 div.title {
   text-align: center;
   cursor: pointer;
