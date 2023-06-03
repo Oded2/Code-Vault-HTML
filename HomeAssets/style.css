@@ -196,12 +196,8 @@ div.main {
   max-width: 100%;
 }
 
-div.container a {
-  width: inherit;
-  height: inherit;
-}
-
 div.title {
+  padding: 2px;
   text-align: center;
   cursor: pointer;
   margin-top: 2%;
@@ -230,12 +226,11 @@ div.imageHolder {
 
 div.imageHolder > img {
   width: 100%;
-  box-shadow: 5px 10px 8px var(--boxShadow);
 }
 
 div.container {
   margin-bottom: 50px;
-  height: 50%;
+  height: 60%;
   width: 100%;
 }
 div.info {
@@ -248,4 +243,18 @@ div.info {
 div.container a {
   text-decoration: none;
   color: var(--fullWhite);
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  color: var(--fullBlack);
+  padding: 2px;
+  text-align: center;
+  background-color: var(--lightGray);
+}
+
+.footer a {
+  color: var(--fullBlack);
+  text-decoration: none;
 }
