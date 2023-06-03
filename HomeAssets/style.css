@@ -241,4 +241,5 @@ div.info {
 
 div.container a {
   text-decoration: none;
+  color: var(--fullWhite);
 }
