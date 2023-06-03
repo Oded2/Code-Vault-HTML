@@ -1,5 +1,5 @@
 // TEMPORARY
-// redirect();
+redirect();
 
 function redirect() {
   location.href = "fun-projects/index.html";
