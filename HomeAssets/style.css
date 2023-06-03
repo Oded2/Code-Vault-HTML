@@ -7,6 +7,11 @@
   --lightGray: #ddd;
   --fullWhite: white;
   --body: #292929;
+  --boxShadow: rgb(44, 44, 44);
+}
+
+.demo {
+  border: 5px dashed red;
 }
 
 .header {
@@ -21,6 +26,7 @@
   font-size: 40px;
 }
 .navbar {
+  z-index: 1;
   overflow: hidden;
   background-color: var(--w3Black);
   position: sticky;
@@ -81,6 +87,39 @@
 
 .w-100 {
   width: 100% !important;
+}
+
+.h-50 {
+  height: 50% !important;
+}
+
+.w-50 {
+  width: 50% !important;
+}
+
+.h-40 {
+  height: 40% !important;
+}
+.w-40 {
+  width: 40% !important;
+}
+
+.color {
+  color: var(--fullWhite);
+}
+
+.font-big {
+  font-size: 30px;
+}
+
+.font-med {
+  font-size: 20px;
+}
+.font-small {
+  font-size: 10px;
+}
+.font-bold {
+  font-weight: bold;
 }
 
 .position-relative {
@@ -157,18 +196,20 @@ div.main {
   max-width: 100%;
 }
 div.title {
+  cursor: pointer;
   margin-top: 2%;
   margin-left: 2%;
   background-color: var(--black);
-  border-radius: 40px;
+  border-radius: 20px;
   transition: 0.5s;
   color: var(--fullWhite);
-  width: 20%;
-  height: 8%;
+  width: 20em;
+  height: 5em;
   min-height: 80px;
   min-width: 200px;
 }
 div.title:hover {
+  z-index: 0;
   scale: 105%;
 }
 
@@ -177,8 +218,22 @@ div.title:hover {
 }
 
 div.imageHolder {
-  object-fit: contain;
   padding: 12px;
   height: 40%;
-  width: 30%;
+  width: 40%;
+}
+
+div.imageHolder > img {
+  width: 100%;
+  box-shadow: 5px 10px 8px var(--boxShadow);
+}
+
+div.container {
+  height: 50%;
+  width: 100%;
+}
+div.info {
+  padding: 12px;
+  height: 80%;
+  width: 100%;
 }
