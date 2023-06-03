@@ -196,6 +196,7 @@ div.main {
   max-width: 100%;
 }
 div.title {
+  text-align: center;
   cursor: pointer;
   margin-top: 2%;
   margin-left: 2%;
@@ -203,8 +204,8 @@ div.title {
   border-radius: 20px;
   transition: 0.5s;
   color: var(--fullWhite);
-  width: 20em;
-  height: 5em;
+  width: 40%;
+  height: 10%;
   min-height: 80px;
   min-width: 200px;
 }
@@ -219,8 +220,6 @@ div.title:hover {
 
 div.imageHolder {
   padding: 12px;
-  height: 40%;
-  width: 40%;
 }
 
 div.imageHolder > img {
@@ -229,11 +228,17 @@ div.imageHolder > img {
 }
 
 div.container {
+  margin-bottom: 50px;
   height: 50%;
   width: 100%;
 }
 div.info {
+  overflow: auto;
   padding: 12px;
   height: 80%;
   width: 100%;
+}
+
+div.container a {
+  text-decoration: none;
 }
