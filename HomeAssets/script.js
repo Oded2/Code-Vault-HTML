@@ -1,5 +1,9 @@
 // TEMPORARY
-location.href = "fun-projects/index.html";
+redirect();
+
+function redirect() {
+  location.href = "fun-projects/index.html";
+}
 
 let root;
 let body;
