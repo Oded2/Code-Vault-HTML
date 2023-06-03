@@ -122,6 +122,14 @@
   font-weight: bold;
 }
 
+.overflow-auto {
+  overflow: auto !important;
+}
+
+.overflow-hidden {
+  overflow: hidden !important;
+}
+
 .position-relative {
   position: relative;
 }
@@ -234,7 +242,6 @@ div.container {
   width: 100%;
 }
 div.info {
-  overflow: auto;
   padding: 12px;
   height: 80%;
   width: 100%;
@@ -243,18 +250,4 @@ div.info {
 div.container a {
   text-decoration: none;
   color: var(--fullWhite);
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  color: var(--fullBlack);
-  padding: 2px;
-  text-align: center;
-  background-color: var(--lightGray);
-}
-
-.footer a {
-  color: var(--fullBlack);
-  text-decoration: none;
 }
