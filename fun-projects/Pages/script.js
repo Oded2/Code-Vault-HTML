@@ -34,9 +34,11 @@ var abc = {
   z: 26,
 };
 
-function updateRangeValue() {
-  var rangeValue = document.getElementById("shift").value;
-  document.getElementById("rangeValue").innerText = rangeValue;
+var isAlpha = /^[A-Za-z]+$/;
+var isUpper = /^[A-Z]+$/;
+var isNumeric = /^-?\d+(\.\d+)?$/;
+
+function update() {
   if (title == "Encrypter") {
     encrypt();
   } else if (title == "Decrypter") {
@@ -44,13 +46,51 @@ function updateRangeValue() {
   }
 }
 
+// def hash(string):
+//     final = 0
+
+//     for i in string:
+//         multiplier = len(string)
+//         i = str(i)
+//         if i.isalpha():
+//             if i.isupper():
+//                 multiplier *= 2
+
+//             final += (az_map[i.lower()] + 1)*multiplier
+
+//         elif i.isnumeric():
+//             final += int(i) * multiplier
+//         elif i in charMap:
+//             final += charMap[i] * multiplier
+//         else:
+//             final += 1
+//     return final
+
+function hash(pass) {
+  let final = 0;
+  for (i = 0; i < pass.length; i++) {
+    let multiplier = pass.length;
+    const currentIndex = pass[i];
+    if (isAlpha.test(currentIndex)) {
+      if (isUpper.test(currentIndex)) {
+        multiplier *= 2;
+      }
+      final += abc[currentIndex.toLowerCase()] * multiplier;
+    } else if (isNumeric.test(currentIndex)) {
+      final += parseInt(currentIndex);
+    } else {
+      final += 1;
+    }
+  }
+  return final;
+}
+
 function encrypt() {
   var message = document.getElementById("userEncrypt").value;
-  var shift = parseInt(document.getElementById("shift").value);
-
-  document.getElementById("output").innerText = encryptAny(message, shift);
+  var password = parseInt(document.getElementById("password").value);
+  document.getElementById("output").innerText = encryptAny(message, password);
 }
-function encryptAny(message, shift) {
+function encryptAny(message, password) {
   var result = "";
   var e = null;
   for (var i of message) {
@@ -59,7 +99,7 @@ function encryptAny(message, shift) {
     if (isLetter) {
       i = i.toLowerCase();
       var place = abc[i];
-      place += shift;
+      place += password;
       if (place > 26) {
         place -= 26;
       }
