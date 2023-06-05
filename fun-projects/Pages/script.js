@@ -6,32 +6,68 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 var abc = {
-  a: 1,
-  b: 2,
-  c: 3,
-  d: 4,
-  e: 5,
-  f: 6,
-  g: 7,
-  h: 8,
-  i: 9,
-  j: 10,
-  k: 11,
-  l: 12,
-  m: 13,
-  n: 14,
-  o: 15,
-  p: 16,
-  q: 17,
-  r: 18,
-  s: 19,
-  t: 20,
-  u: 21,
-  v: 22,
-  w: 23,
-  x: 24,
-  y: 25,
-  z: 26,
+  a: 0,
+  b: 1,
+  c: 2,
+  d: 3,
+  e: 4,
+  f: 5,
+  g: 6,
+  h: 7,
+  i: 8,
+  j: 9,
+  k: 10,
+  l: 11,
+  m: 12,
+  n: 13,
+  o: 14,
+  p: 15,
+  q: 16,
+  r: 17,
+  s: 18,
+  t: 19,
+  u: 20,
+  v: 21,
+  w: 22,
+  x: 23,
+  y: 24,
+  z: 25,
+};
+
+const charMap = {
+  "!": 0,
+  "@": 1,
+  "#": 2,
+  $: 3,
+  "%": 4,
+  "^": 5,
+  "&": 6,
+  "*": 7,
+  "(": 8,
+  ")": 9,
+  " ": 10,
+  ".": 11,
+  ",": 12,
+  "[": 13,
+  "]": 14,
+  "|": 15,
+  "/": 16,
+  "\\": 17,
+  "-": 18,
+  "+": 19,
+  "=": 20,
+  _: 21,
+  "`": 22,
+  "~": 23,
+  "?": 24,
+  "<": 25,
+  ">": 26,
+  "{": 27,
+  "}": 28,
+  "'": 29,
+  '"': 30,
+  ";": 31,
+  ":": 32,
 };
 
 var isAlpha = /^[A-Za-z]+$/;
@@ -46,38 +82,80 @@ function update() {
   }
 }
 
-// def hash(string):
-//     final = 0
+function shiftUp(letter, num) {
+  if (letter.toLowerCase() in abc) {
+    const isCap = letter.toUpperCase() === letter;
+    const position = abc[letter.toLowerCase()];
 
-//     for i in string:
-//         multiplier = len(string)
-//         i = str(i)
-//         if i.isalpha():
-//             if i.isupper():
-//                 multiplier *= 2
+    for (const i in abc) {
+      if (abc[i] == (position + num) % 26) {
+        if (isCap) {
+          return i.toUpperCase();
+        } else {
+          return i.toLowerCase();
+        }
+      }
+    }
+  } else if (letter in charMap) {
+    const position = charMap[letter];
+    const length = Object.keys(charMap).length;
+    for (const i in charMap) {
+      if (charMap[i] == (position + num) % length) {
+        return i;
+      }
+    }
+  } else if (!isNaN(parseInt(letter))) {
+    const numShift = (parseInt(letter) + num) % 10;
+    return numShift.toString();
+  } else {
+    return letter;
+  }
+}
 
-//             final += (az_map[i.lower()] + 1)*multiplier
+function shiftDown(letter, num) {
+  if (letter.toLowerCase() in abc) {
+    const isCap = letter.toUpperCase() === letter;
+    const position = abc[letter.toLowerCase()];
 
-//         elif i.isnumeric():
-//             final += int(i) * multiplier
-//         elif i in charMap:
-//             final += charMap[i] * multiplier
-//         else:
-//             final += 1
-//     return final
+    for (const i in abc) {
+      if (abc[i] === (position - num + 26) % 26) {
+        if (isCap) {
+          return i.toUpperCase();
+        } else {
+          return i.toLowerCase();
+        }
+      }
+    }
+  } else if (letter in charMap) {
+    const position = charMap[letter];
+    const length = Object.keys(charMap).length;
+    for (const i in charMap) {
+      if (charMap[i] === (position - num + length) % length) {
+        return i;
+      }
+    }
+  } else if (!isNaN(parseInt(letter))) {
+    const numShift = (parseInt(letter) - num + 10) % 10;
+    return numShift.toString();
+  } else {
+    return letter;
+  }
+}
 
 function hash(pass) {
   let final = 0;
   for (i = 0; i < pass.length; i++) {
     let multiplier = pass.length;
     const currentIndex = pass[i];
-    if (isAlpha.test(currentIndex)) {
+    if (currentIndex.toLowerCase() in abc) {
       if (isUpper.test(currentIndex)) {
         multiplier *= 2;
       }
-      final += abc[currentIndex.toLowerCase()] * multiplier;
+      final += (abc[currentIndex.toLowerCase()] + 1) * multiplier;
     } else if (isNumeric.test(currentIndex)) {
       final += parseInt(currentIndex);
+    } else if (currentIndex in charMap) {
+      final += (charMap[currentIndex] + 1) * multiplier;
     } else {
       final += 1;
     }
@@ -86,75 +164,49 @@ function hash(pass) {
 }
 
 function encrypt() {
-  var message = document.getElementById("userEncrypt").value;
-  var password = parseInt(document.getElementById("password").value);
-  document.getElementById("output").innerText = encryptAny(message, password);
+  const message = document.getElementById("userEncrypt").value;
+  const password = document.getElementById("password").value;
+  const hashPass = hash(password);
+  document.getElementById("passLabel").innerText = "Hash: " + hashPass;
+  const encrypted = encryptAny(message, hashPass);
+
+  document.getElementById("output").innerText = encrypted;
 }
-function encryptAny(message, password) {
-  var result = "";
-  var e = null;
-  for (var i of message) {
-    var isLetter = /[a-zA-Z]/.test(i);
-    var isCap = /[A-Z]/.test(i);
-    if (isLetter) {
-      i = i.toLowerCase();
-      var place = abc[i];
-      place += password;
-      if (place > 26) {
-        place -= 26;
-      }
-      for (var key in abc) {
-        if (abc[key] == place) {
-          e = key;
-          break;
-        }
-      }
-      if (isCap) {
-        e = e.toUpperCase();
-      }
-    } else {
-      e = i;
-    }
-    result += e;
+
+function encryptAny(message, code) {
+  message = message.toString();
+  code = code.toString();
+  let final = "";
+  for (let i = 0; i < message.length; i++) {
+    const currentLetter = message[i];
+    const currentIndex = i % code.length;
+    const current_num = parseInt(code[currentIndex]);
+    final += shiftUp(currentLetter, current_num);
   }
-  return result;
+  return final;
 }
 
 function decrypt() {
-  var message = document.getElementById("userDecrypt").value;
-  var shift = parseInt(document.getElementById("shift").value);
-  document.getElementById("output").innerText = decryptAny(message, shift);
+  const message = document.getElementById("userDecrypt").value;
+  const password = document.getElementById("password").value;
+  const hashPass = hash(password);
+  document.getElementById("passLabel").innerText = "Hash: " + hashPass;
+  const decrypted = decryptAny(message, hashPass);
+
+  document.getElementById("output").innerText = decrypted;
 }
 
-function decryptAny(message, shift) {
-  var result = "";
-
-  var e = null;
-  for (var i of message) {
-    var isLetter = /[a-zA-Z]/.test(i);
-    var isCap = /[A-Z]/.test(i);
-    if (isLetter) {
-      i = i.toLowerCase();
-      var place = abc[i];
-      place -= shift;
-      if (place < 1) {
-        place += 26;
-      }
-      for (var key in abc) {
-        if (abc[key] == place) {
-          e = key;
-          break;
-        }
-      }
-      if (isCap) {
-        e = e.toUpperCase();
-      }
-    } else {
-      e = i;
-    }
-    result += e;
+function decryptAny(message, code) {
+  message = message.toString();
+  code = code.toString();
+  let final = "";
+  for (let i = 0; i < message.length; i++) {
+    const currentLetter = message[i];
+    const currentIndex = i % code.length;
+    const current_num = parseInt(code[currentIndex]);
+    final += shiftDown(currentLetter, current_num);
   }
-  return result;
+  return final;
 }
 
 function copytoClipboard() {
@@ -169,7 +221,6 @@ function paste() {
     .readText()
     .then((text) => {
       clip = text;
-      console.log(clip);
       if (title == "Encrypter") {
         document.getElementById("userEncrypt").innerHTML = clip;
         encrypt();

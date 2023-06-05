@@ -7,6 +7,7 @@
     <title>Decrypter</title>
     <link rel="shortcut icon" href="Images/icon.png" type="image/png" />
     <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -72,16 +73,14 @@
               <div class="col-md-6 col-12 mb-3 mb-md-0">
                 <h1 class="h2 mb-0 ls-tight">Text Decrypter</h1>
                 <h3 class="text-md-right">
-                  Select Shift: &nbsp;
+                  Choose a Password: &nbsp;
                   <input
-                    type="range"
-                    name="shift"
-                    id="shift"
-                    min="1"
-                    max="26"
-                    oninput="updateRangeValue()"
+                    class="custom-text-input"
+                    type="text"
+                    id="password"
+                    oninput="update()"
                   />
-                  <label for="shift" id="rangeValue">14</label>
+                  <label for="password" id="passLabel">Hash: </label>
                 </h3>
               </div>
             </div>
