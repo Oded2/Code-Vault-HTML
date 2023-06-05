@@ -210,7 +210,8 @@ function decryptAny(message, code) {
 }
 
 function copytoClipboard() {
-  var text = document.getElementById("output").innerText;
+  let text = document.getElementById("output").value;
+  console.log(text);
   navigator.clipboard.writeText(text);
 }
 
