@@ -8,3 +8,12 @@ input::-webkit-inner-spin-button {
 #doubleCard {
   letter-spacing: 2px;
 }
+
+.custom-text-input {
+  font-size: 22px;
+  padding: 6px;
+  transition: 0.2s;
+}
+.custom-text-input:focus {
+  background-color: rgb(235, 235, 235);
+}
