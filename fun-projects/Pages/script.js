@@ -75,6 +75,10 @@ var isUpper = /^[A-Z]+$/;
 var isNumeric = /^-?\d+(\.\d+)?$/;
 
 function update() {
+  const password = document.getElementById("password").value;
+  const hashPass = hash(password);
+  document.getElementById("passLabel").innerHTML =
+    "Hash: " + hashPass + "&nbsp; &nbsp;";
   if (title == "Encrypter") {
     encrypt();
   } else if (title == "Decrypter") {
@@ -86,7 +90,6 @@ function shiftUp(letter, num) {
   if (letter.toLowerCase() in abc) {
     const isCap = letter.toUpperCase() === letter;
     const position = abc[letter.toLowerCase()];
-
     for (const i in abc) {
       if (abc[i] == (position + num) % 26) {
         if (isCap) {
@@ -167,10 +170,9 @@ function encrypt() {
   const message = document.getElementById("userEncrypt").value;
   const password = document.getElementById("password").value;
   const hashPass = hash(password);
-  document.getElementById("passLabel").innerText = "Hash: " + hashPass;
   const encrypted = encryptAny(message, hashPass);
 
-  document.getElementById("output").innerText = encrypted;
+  document.getElementById("output").innerHTML = encrypted;
 }
 
 function encryptAny(message, code) {
@@ -190,10 +192,9 @@ function decrypt() {
   const message = document.getElementById("userDecrypt").value;
   const password = document.getElementById("password").value;
   const hashPass = hash(password);
-  document.getElementById("passLabel").innerText = "Hash: " + hashPass;
   const decrypted = decryptAny(message, hashPass);
 
-  document.getElementById("output").innerText = decrypted;
+  document.getElementById("output").innerHTML = decrypted;
 }
 
 function decryptAny(message, code) {
@@ -222,11 +223,12 @@ function paste() {
     .readText()
     .then((text) => {
       clip = text;
+      console.log(clip);
       if (title == "Encrypter") {
-        document.getElementById("userEncrypt").innerHTML = clip;
+        document.getElementById("userEncrypt").value = clip;
         encrypt();
       } else if (title == "Decrypter") {
-        document.getElementById("userDecrypt").innerHTML = clip;
+        document.getElementById("userDecrypt").value = clip;
         decrypt();
       } else if (title == "Credit Card Validator") {
         document.getElementById("cc").value = clip;

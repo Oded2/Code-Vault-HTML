@@ -10,10 +10,15 @@ input::-webkit-inner-spin-button {
 }
 
 .custom-text-input {
+  border: 1px solid gray;
+  border-radius: 5px;
   font-size: 22px;
   padding: 6px;
-  transition: 0.2s;
+  transition: 200ms;
+  outline: none;
 }
 .custom-text-input:focus {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   background-color: rgb(235, 235, 235);
 }
