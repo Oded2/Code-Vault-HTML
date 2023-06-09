@@ -367,10 +367,6 @@ function generateCard() {
   document.getElementById("sumOfDigits").innerText = sum;
 }
 
-function contactMe() {
-  document.location.href = "mailto:odedconnect@gmail.com";
-}
-
 function leaveBlank(htmlID) {
   if (htmlID.innerText.length == 0 || htmlID.innerText == "0") {
     htmlID.innerHTML = "&nbsp;";
