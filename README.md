@@ -22,7 +22,7 @@ Can be used to encrypt text using a password and hashing method. Good for fun me
 
 _decrypt.html_
 
-Can be used to decrypt text using a password and hashingm method. Will decrypt any encrypted text from the encrypter, using the smae password and hashing method.
+Can be used to decrypt text using a password and hashingm method. Will decrypt any encrypted text from the encrypter, using the same password and hashing method.
 
 _CCvalidator.html_
 
