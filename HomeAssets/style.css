@@ -1,4 +1,4 @@
-:root {
+/* :root {
   --blue: blue;
   -white: white;
   --black: #1c1c1c;
@@ -250,4 +250,18 @@ div.info {
 div.container a {
   text-decoration: none;
   color: var(--fullWhite);
+} */
+
+@media (min-width: 768px) {
+  .news-input {
+    width: 50%;
+  }
+}
+
+.font-google-quicksand {
+  font-family: "Quicksand", sans-serif;
+}
+
+.demo {
+  border: 5px dashed red;
 }
