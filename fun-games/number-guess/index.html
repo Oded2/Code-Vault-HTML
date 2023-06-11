@@ -9,13 +9,6 @@
       type="image/x-icon"
     />
     <title>Guess the number game</title>
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Quicksand&display=swap"
-      rel="stylesheet"
-    />
     <!-- Font Awesome  -->
     <link
       rel="stylesheet"
@@ -32,6 +25,111 @@
     <link rel="stylesheet" href="../../HomeAssets/style.css" />
   </head>
   <body>
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+      <div class="container">
+        <a href="../../" class="navbar-brand"
+          >Code <span class="text-warning">Vault</span></a
+        >
+        <a href="../" class="navbar-brand">Home</a>
+        <a class="navbar-brand text-secondary">Guess the Number</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="class-item">
+              <a href="../../about/" class="nav-link">About</a>
+            </li>
+            <li class="class-item">
+              <a href="mailto:odedconnect@gmail.com" class="nav-link"
+                ><i class="fa-solid fa-envelope"></i> Contact</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Product section-->
+    <section class="py-5">
+      <div class="container">
+        <div class="row gx-4 gx-lg-5">
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-7 text-center text-md-start">
+                <h1 class="font-google-quicksand">Minimum Number</h1>
+              </div>
+              <div class="col-md-5 d-flex align-items-center">
+                <input
+                  type="number"
+                  id="min-num"
+                  class="form-control font-google-quicksand"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-7 text-center text-md-start">
+                <h1 class="font-google-quicksand">Maximum Number</h1>
+              </div>
+              <div class="col-md-5 d-flex align-items-center">
+                <input
+                  type="number"
+                  id="max-num"
+                  class="form-control font-google-quicksand"
+                />
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="col-md-12 text-center text-md-start d-flex justify-content-center"
+              >
+                <button
+                  class="btn btn-primary fs-5 w-25"
+                  type="submit"
+                  onclick="getNumber()"
+                >
+                  Start
+                </button>
+              </div>
+            </div>
+
+            <h1>Your random number is: <span id="random-number"></span></h1>
+          </div>
+          <!-- <div class="col-md-6">
+            <div class="small mb-1">SKU: BST-498</div>
+            <h1 class="display-5 fw-bolder">Shop item template</h1>
+            <div class="fs-5 mb-5">
+              <span class="text-decoration-line-through">$45.00</span>
+              <span>$40.00</span>
+            </div>
+            <p class="lead">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Praesentium at dolorem quidem modi. Nam sequi consequatur
+              obcaecati excepturi alias magni, accusamus eius blanditiis
+              delectus ipsam minima ea iste laborum vero?
+            </p>
+            <div class="d-flex">
+              <input
+                class="form-control text-center me-3"
+                id="inputQuantity"
+                type="num"
+                value="1"
+                style="max-width: 3rem"
+              />
+              <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                <i class="bi-cart-fill me-1"></i>
+                Add to cart
+              </button>
+            </div>
+          </div> -->
+        </div>
+      </div>
+    </section>
+
     <!-- <h1>Max Number</h1>
     <input type="number" id="max-num" />
 

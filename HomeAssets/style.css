@@ -1,8 +1,4 @@
-@media (min-width: 768px) {
-  .news-input {
-    width: 50%;
-  }
-}
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
 .font-google-quicksand {
   font-family: "Quicksand", sans-serif;
