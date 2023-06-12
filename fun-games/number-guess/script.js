@@ -70,21 +70,18 @@ function check() {
     trydiv.classList.add("bg-danger");
   }
   if (!attemptedNums.includes(userNum)) {
-    attemptedNums[actualTries - 1] = userNum;
+    attemptedNums[actualTries] = userNum;
     actualTries += 1;
-  } else {
-    return;
-  }
-
-  attempted.innerText = "";
-  attemptedNums.sort(function (a, b) {
-    return a - b;
-  });
-  for (i = 0; i < attemptedNums.length; i++) {
-    if (i == attemptedNums.length - 1) {
-      attempted.innerText += " " + attemptedNums[i];
-    } else {
-      attempted.innerText += "  " + attemptedNums[i] + ",";
+    attempted.innerText = "";
+    attemptedNums.sort(function (a, b) {
+      return a - b;
+    });
+    for (i = 0; i < attemptedNums.length; i++) {
+      if (i == attemptedNums.length - 1) {
+        attempted.innerText += " " + attemptedNums[i];
+      } else {
+        attempted.innerText += "  " + attemptedNums[i] + ",";
+      }
     }
   }
 }
