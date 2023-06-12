@@ -8,9 +8,13 @@ Link: https://oded.benamotz.com
 
 Basic website, mostly for fun. A lot of fun gimmicks to use.
 
+CSS powered by Bootstrap (https://getbootstrap.com/)
+
+Icons by FontAwesome (https://fontawesome.com/)
+
 **Fun Projects**
 
-CSS powered by bootstrap (https://getbootstrap.com/)
+
 
 _index.html_
 
