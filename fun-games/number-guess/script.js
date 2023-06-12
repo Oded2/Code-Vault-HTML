@@ -1,5 +1,6 @@
 let winningNum;
 let tries = 0;
+let actualTries = 0;
 let attemptedNums = [];
 function randomNum(min, max) {
   let x = Math.floor(Math.random() * max + min);
@@ -34,6 +35,7 @@ function getNumber() {
 }
 function check() {
   tries += 1;
+
   const attempted = document.getElementById("attempted");
   const userNum = document.getElementById("userNum").value;
   const div = document.getElementById("numInfo");
@@ -67,7 +69,12 @@ function check() {
     trydiv.classList.remove("bg-warning");
     trydiv.classList.add("bg-danger");
   }
-  attemptedNums[tries - 1] = userNum;
+  if (!attemptedNums.includes(userNum)) {
+    attemptedNums[actualTries - 1] = userNum;
+    actualTries += 1;
+  } else {
+    return;
+  }
 
   attempted.innerText = "";
   attemptedNums.sort(function (a, b) {
