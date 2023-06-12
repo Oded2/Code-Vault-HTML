@@ -54,17 +54,18 @@
         </div>
       </div>
     </nav>
-    <!-- Product section-->
+    <!-- Game-->
     <section class="py-5">
       <div class="container">
         <div class="row gx-4 gx-lg-5">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <div class="row">
               <div class="col-md-7 text-center text-md-start">
                 <h1 class="font-google-quicksand">Minimum Number</h1>
               </div>
               <div class="col-md-5 d-flex align-items-center">
                 <input
+                  value="0"
                   type="number"
                   id="min-num"
                   class="form-control font-google-quicksand"
@@ -77,6 +78,7 @@
               </div>
               <div class="col-md-5 d-flex align-items-center">
                 <input
+                  value="100"
                   type="number"
                   id="max-num"
                   class="form-control font-google-quicksand"
@@ -88,61 +90,88 @@
                 class="col-md-12 text-center text-md-start d-flex justify-content-center"
               >
                 <button
-                  class="btn btn-primary fs-5 w-25"
-                  type="submit"
+                  class="btn btn-primary fs-5 w-25 my-md-0 my-2"
+                  id="start-btn"
                   onclick="getNumber()"
                 >
                   Start
                 </button>
               </div>
             </div>
-
-            <h1>Your random number is: <span id="random-number"></span></h1>
           </div>
-          <!-- <div class="col-md-6">
-            <div class="small mb-1">SKU: BST-498</div>
-            <h1 class="display-5 fw-bolder">Shop item template</h1>
-            <div class="fs-5 mb-5">
-              <span class="text-decoration-line-through">$45.00</span>
-              <span>$40.00</span>
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <h1 class="font-google-quicksand">Enter Your Guess</h1>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12 text-center">
+                    <div class="d-flex justify-content-center">
+                      <input
+                        disabled
+                        type="number"
+                        id="userNum"
+                        class="form-control py-2 w-25 fs-5"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="d-flex justify-content-center align-items-center h-100"
+                >
+                  <button
+                    class="btn btn-secondary h-75 w-25 fs-4 my-4 my-md-0 mx-2"
+                    onclick="check()"
+                    id="check-btn"
+                    disabled
+                  >
+                    Check
+                  </button>
+                  <button
+                    class="btn btn-secondary h-75 w-25 fs-5 my-4 my-md-0 mx-2 text-light"
+                    onclick="reveal()"
+                    id="reveal-btn"
+                    disabled
+                  >
+                    Reveal Answer
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-6 py-4">
+                <div
+                  id="numInfo"
+                  class="text-light text-center py-4 bg-secondary rounded"
+                >
+                  <h1 class="font-google-work-sans" id="lowerOrHigher">
+                    Please Start the Game
+                  </h1>
+                </div>
+              </div>
+              <div class="col-md-6 py-4">
+                <div
+                  id="tryDiv"
+                  class="text-light text-center py-4 bg-secondary rounded"
+                >
+                  <h1 class="font-google-work-sans" id="tries">
+                    Attempt Counter
+                  </h1>
+                </div>
+              </div>
+              <div class="col-md-12 py-4">
+                <p class="display-6">
+                  Numbers Tried: <span id="attempted"></span>
+                </p>
+              </div>
             </div>
-            <p class="lead">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Praesentium at dolorem quidem modi. Nam sequi consequatur
-              obcaecati excepturi alias magni, accusamus eius blanditiis
-              delectus ipsam minima ea iste laborum vero?
-            </p>
-            <div class="d-flex">
-              <input
-                class="form-control text-center me-3"
-                id="inputQuantity"
-                type="num"
-                value="1"
-                style="max-width: 3rem"
-              />
-              <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                <i class="bi-cart-fill me-1"></i>
-                Add to cart
-              </button>
-            </div>
-          </div> -->
+          </div>
         </div>
       </div>
     </section>
-
-    <!-- <h1>Max Number</h1>
-    <input type="number" id="max-num" />
-
-    <h1>Min Number</h1>
-
-    <input type="number" id="min-num" />
-    <br />
-    <button onclick="getNumber()">Click to generate a random number</button>
-    <h1>Your random number is: <span id="random-number"></span></h1>
-    <h1>Input your number</h1>
-    <input type="number" name="" id="userNum" />
-    <button onclick="check()">Check</button>
-    <h1>Your number is: <span id="lowerOrHigher"></span></h1> -->
     <script src="script.js"></script>
   </body>
 </html>
