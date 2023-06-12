@@ -32,6 +32,7 @@ function getNumber() {
   document.getElementById("reveal-btn").disabled = false;
   document.getElementById("reveal-btn").classList.remove("btn-secondary");
   document.getElementById("reveal-btn").classList.add("btn-warning");
+  document.getElementById("counter").hidden = false;
 }
 function check() {
   tries += 1;
