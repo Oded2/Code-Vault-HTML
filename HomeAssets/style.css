@@ -2,6 +2,8 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Work+Sans&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
 .font-google-quicksand {
   font-family: "Quicksand", sans-serif;
 }
@@ -9,6 +11,9 @@
   font-family: "Work Sans", sans-serif;
 }
 
+.font-google-roboto-mono {
+  font-family: "Roboto Mono", monospace;
+}
 .demo {
   border: 5px dashed red;
 }
