@@ -50,7 +50,6 @@ function check() {
   const trydiv = document.getElementById("tryDiv");
   const attempts = document.getElementById("tries");
   const lowerOrHigher = document.getElementById("lowerOrHigher");
-  trydiv.hidden = false;
   if (userNum == "") {
     return;
   }
@@ -124,7 +123,6 @@ function resetGame() {
   document.getElementById("reveal-btn").classList.add("btn-secondary");
   document.getElementById("reveal-btn").classList.remove("btn-warning");
   document.getElementById("counter").innerText = "";
-  document.getElementById("counter").hidden = true;
   document.getElementById("numInfo").classList.remove("bg-success");
 
   if (document.getElementById("userNum").value != winningNum) {
