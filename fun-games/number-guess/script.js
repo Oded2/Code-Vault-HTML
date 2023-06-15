@@ -50,6 +50,7 @@ function check() {
   const trydiv = document.getElementById("tryDiv");
   const attempts = document.getElementById("tries");
   const lowerOrHigher = document.getElementById("lowerOrHigher");
+  trydiv.hidden = false;
   if (userNum == "") {
     return;
   }
