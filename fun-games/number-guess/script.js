@@ -122,6 +122,7 @@ function resetGame() {
   document.getElementById("reveal-btn").classList.add("btn-secondary");
   document.getElementById("reveal-btn").classList.remove("btn-warning");
   document.getElementById("counter").hidden = true;
+  document.getElementById("attempted").innerText = "";
 
   document.getElementById("numInfo").classList.remove("bg-success");
 
@@ -143,15 +144,10 @@ function resetGame() {
   document.getElementById("tries").innerText = "Attempt Counter";
   tries = 0;
   actualTries = 0;
-  attemptedNums = clearArr(attemptedNums);
+
+  attemptedNums = [];
+
   document.getElementById("restart").hidden = true;
   document.getElementById("reveal-btn").hidden = false;
   document.getElementById("userNum").value = "";
-}
-
-function clearArr(array) {
-  for (let i = 0; i < array.length; i++) {
-    array[i] = "";
-  }
-  return array;
 }
