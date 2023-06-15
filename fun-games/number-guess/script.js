@@ -42,8 +42,6 @@ function getNumber() {
   document.getElementById("counter").hidden = false;
 }
 function check() {
-  tries += 1;
-
   const attempted = document.getElementById("attempted");
   const userNum = document.getElementById("userNum").value;
   const div = document.getElementById("numInfo");
@@ -53,9 +51,9 @@ function check() {
   if (userNum == "") {
     return;
   }
+  tries += 1;
   div.classList.remove("bg-secondary");
   attempts.innerText = "Attempts: " + tries;
-  //here
   trydiv.classList.remove("bg-secondary");
 
   if (tries < 10) {
@@ -123,14 +121,12 @@ function resetGame() {
   document.getElementById("reveal-btn").disabled = true;
   document.getElementById("reveal-btn").classList.add("btn-secondary");
   document.getElementById("reveal-btn").classList.remove("btn-warning");
-  document.getElementById("counter").innerText = "";
   document.getElementById("counter").hidden = true;
 
+  document.getElementById("numInfo").classList.remove("bg-success");
 
   if (document.getElementById("userNum").value != winningNum) {
     document.getElementById("numInfo").classList.remove("bg-warning");
-  } else{
-    document.getElementById("numInfo").classList.remove("bg-success");
   }
   document.getElementById("numInfo").classList.add("bg-secondary");
   document.getElementById("lowerOrHigher").innerText = "Please Start the Game";
