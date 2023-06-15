@@ -22,3 +22,8 @@ input::-webkit-inner-spin-button {
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
   background-color: rgb(235, 235, 235);
 }
+
+.invisible-custom {
+  visibility: hidden !important;
+  cursor: default !important;
+}
