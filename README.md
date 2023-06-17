@@ -1,55 +1,33 @@
 # Code Vault
 
-Frontend html, css, and javascript.
+This repository contains random projects created for fun. Each project is built using HTML, CSS, and JavaScript and offers unique features and functionalities. You can explore more information about each project in their respective folders.
 
-Link: https://oded.benamotz.com
+## Installation
 
-**Description**
+To use any of the projects in this repository, you can clone the repository using ``git clone``
 
-Basic website, mostly for fun. A lot of fun gimmicks to use.
+Alternatively, you can download the repository as a ZIP file by clicking on the "Code" button above and selecting "Download ZIP". Extract the contents to your desired location.
 
-CSS powered by Bootstrap (https://getbootstrap.com/)
+Take your time to explore each project's unique features and functionalities.
 
-Icons by FontAwesome (https://fontawesome.com/)
+## Contributing
 
-**Fun Projects**
+Contributions to this repository are welcome! If you have an interesting project that you would like to contribute, follow these steps:
 
+1. Fork the repository.
+2. Create a new branch for your project: `git checkout -b feature/your-project`.
+3. Add your project to the repository, following the structure and guidelines of existing projects.
+4. Commit your changes: `git commit -m "Add your-project to the repository"`.
+5. Push to the branch: `git push origin feature/your-project`.
+6. Open a pull request to merge your changes into the main repository.
 
+Please ensure your contributions align with the purpose and style of the repository.
 
-_index.html_
+## License
 
-This is the home page for the fun-projects section. Features descriptions of the page and a "Show Me" button under each box, redirecting to the respected page.
+This repository is open source and available under the [MIT License](LICENSE). Feel free to use the projects in this repository as per the terms of the license.
 
-_encrypt.html_
+## Contact
 
-Can be used to encrypt text using a password and hashing method. Good for fun messgaes with friends, but not reccomended for actual encryption.
+For any questions, feedback, or support, you can reach out to me at odedconnect@gmail.com.
 
-_decrypt.html_
-
-Can be used to decrypt text using a password and hashingm method. Will decrypt any encrypted text from the encrypter, using the same password and hashing method.
-
-_CCvalidator.html_
-
-Will validate any credit card. Does _not_ store your credit card in any way possible, the whole operation is through javascript.
-
-_CCgenerator.html_
-
-Will generate any valid credit number using a while loop to find a 16 digit number that turns out to be a valid credit card using the same operation as the credit card validator. For demo purposes only.
-
-_photoData.html_
-
-This is a tool used to check the metadata in an image. Used exif.js library (https://github.com/exif-js) to find the metadata. No information stored, everything happens locally.
-
-**Python Encrypter**
-
-_main.py_
-
-Main file to open to first use this, uses all the operations from _secretKey.py_ and can encrypt and decrypt text files.
-
-_secret.py_
-
-This file is the file used to power main file with it's functions.
-
-**Contact**
-
-Email: odedconnect@gmail.com
