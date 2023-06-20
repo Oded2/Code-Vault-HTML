@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Quicksand&family=Roboto+Mono&family=Signika+Negative:wght@400;700&family=Work+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Mulish&family=Quicksand&family=Roboto+Mono&family=Signika+Negative:wght@400;700&family=Work+Sans&display=swap");
 
 .font-google-quicksand {
   font-family: "Quicksand", sans-serif;
@@ -13,6 +13,10 @@
 
 .font-google-signika-negative {
   font-family: "Signika Negative", sans-serif;
+}
+
+.font-google-mulish {
+  font-family: "Mulish", sans-serif;
 }
 .demo {
   border: 5px dashed red;
