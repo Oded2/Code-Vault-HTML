@@ -1,6 +1,6 @@
 # Code Vault
 
-This repository contains random projects created for fun. Each project is built using HTML, CSS, and JavaScript and offers unique features and functionalities. You can explore more information about each project in their respective folders.
+This repository contains random projects created for fun. Each project is built using HTML, CSS, and JavaScript and offers unique features and functionalities. You can check out the website at https://oded.benamotz.com.
 
 ## Installation
 
