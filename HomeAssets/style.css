@@ -103,3 +103,7 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+
+.letter-spaced {
+  letter-spacing: 0.2em !important;
+}
