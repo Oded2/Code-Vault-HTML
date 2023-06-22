@@ -6,11 +6,28 @@ const maxLen = document.getElementById("maxLen");
 const maxTries = document.getElementById("maxTries");
 const hints = document.getElementById("showHints");
 const placeholderFinal = document.getElementById("placeholderFinal");
-
+const userGuess = document.getElementById("userGuess");
+const checkButton = document.getElementById("checkButton");
+const lettersUsed = document.getElementById("lettersUsed");
 let indexes = [0, 4];
 
 // Array of words
-let words = ["apple", "banana", "orange", "grape", "melon"];
+let words;
+getWords();
+function getWords() {
+  fetch("https://random-word-api.herokuapp.com/word?number=100")
+    .then((response) => response.json())
+    .then((data) => {
+      words = data[0];
+      console.log(words);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      return;
+    });
+}
+
+console.log(words);
 
 function chooseWord() {
   let randomIndex = Math.floor(Math.random() * words.length);
@@ -29,7 +46,9 @@ let word = "cheetah";
 // });
 
 function startGame() {
+  console.log(words);
   word = chooseWord();
+  userGuess.maxLength = word.length;
   console.log(word);
   placeholderFinal.innerText = fill(placeholder.value, indexes, word);
   titleSection.hidden = true;
