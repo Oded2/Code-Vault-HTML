@@ -23,10 +23,10 @@ let word = "cheetah";
 
 // To see if hints are checked do hints.checked
 // Temporary;
-document.addEventListener("DOMContentLoaded", () => {
-  titleSection.hidden = true;
-  gameSection.hidden = false;
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   titleSection.hidden = true;
+//   gameSection.hidden = false;
+// });
 
 function startGame() {
   word = chooseWord();
