@@ -170,7 +170,10 @@
           <div class="col-12 text-center py-4">
             <h1 class="font-google-roboto-mono">Guess the Word</h1>
           </div>
-          <div class="div col-12 border border-info text-center rounded">
+          <div
+            class="div col-12 border border-info text-center rounded"
+            id="placeholderDiv"
+          >
             <p
               id="placeholderFinal"
               class="display-2 letter-spaced text-capitalize"
@@ -203,11 +206,29 @@
             </div>
           </div>
           <div class="row py-3 bg-dark-subtle">
-            <div class="col-md-4 py-1 d-flex-center">
+            <div class="col-md-4 py-1 text-md-end text-center">
               <h1 class="font-google-quicksand fw-bold">Letters Used:</h1>
             </div>
             <div class="col-md-8 text-start">
               <p class="display-6" id="lettersUsed"></p>
+            </div>
+          </div>
+          <div class="row py-3 bg-secondary-subtle">
+            <div class="col-md-4 py-1 text-md-end text-center">
+              <h1 class="font-google-quicksand fw-bold">Tries Left:</h1>
+            </div>
+            <div class="col-md-6 text-start">
+              <!-- <p class="display-6" id="triesLeft"></p> -->
+              <input
+                class="w-100 h-100"
+                disabled
+                type="range"
+                id="triesLeft"
+                min="0"
+              />
+            </div>
+            <div class="col-md-2 text-center">
+              <h1 id="triesLeftNum" class="font-google-quicksand"></h1>
             </div>
           </div>
           <div class="row bg-info-subtle p-3" id="hintsDiv" hidden>
@@ -269,6 +290,7 @@
               </div>
             </div> -->
           </div>
+
           <div class="row py-3 bg-secondary-subtle">
             <div class="col-md-6 text-center">
               <button

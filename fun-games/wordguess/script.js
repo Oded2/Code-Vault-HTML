@@ -16,13 +16,16 @@ const pos = document.getElementById("hintPoS");
 const definitionDiv = document.getElementById("definitionDiv");
 const synonymDiv = document.getElementById("synonymDiv");
 const posDiv = document.getElementById("posDiv");
+const placeholderDiv = document.getElementById("placeholderDiv");
+const triesLeft = document.getElementById("triesLeft");
+const triesLeftNum = document.getElementById("triesLeftNum");
 userGuess.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
     check();
   }
 });
-
+let attempts;
 let indexes = [];
 let lettersTried = [];
 let hintsUsed = 0;
@@ -79,7 +82,6 @@ function chooseWordNow() {
 
 let word;
 
-// To see if hints are checked do hints.checked
 // Temporary;
 // document.addEventListener("DOMContentLoaded", () => {
 //   titleSection.hidden = true;
@@ -99,9 +101,15 @@ function chooseWord(min, max) {
 }
 
 function startGame() {
+  userGuess.value = "";
+
+  triesLeft.max = maxTries.value;
+  updateTries();
+  attempts = 0;
   indexes = [];
   lettersTried = [];
   hintsUsed = 0;
+  borderRemove();
   if (hints.checked) {
     hintsDiv.hidden = false;
   }
@@ -112,7 +120,7 @@ function startGame() {
   word = chooseWord(min, max);
   // fetchDataHints(word);
   userGuess.maxLength = word.length;
-  // console.log("Word is: " + word);
+  console.log("Word is: " + word);
   fill();
   titleSection.hidden = true;
   gameSection.hidden = false;
@@ -132,18 +140,26 @@ function fill() {
   placeholderFinal.innerText = final_word;
 }
 
-function test() {
-  fill();
+function updateTries() {
+  if (maxTries.value - attempts >= 0) {
+    triesLeft.value = maxTries.value - attempts;
+
+    triesLeftNum.innerText = maxTries.value - attempts;
+  }
 }
 
 function check() {
   const user = userGuess.value.toLowerCase();
+  if (user != "" && !lettersTried.includes(user) && !word.includes(user)) {
+    attempts++;
+  }
+
   if (user == word) {
     placeholderFinal.innerText = word;
   } else {
     for (let i = 0; i < word.length; i++) {
       const current = word[i];
-      if (user == current) {
+      if (user == current && !indexes.includes(i)) {
         indexes[indexes.length] = i;
       }
     }
@@ -161,26 +177,54 @@ function check() {
         }
       }
     }
+    updateTries();
     fill();
   }
   userGuess.value = "";
-  if (placeholderFinal.innerText.toLowerCase() == word) {
-    console.log("You won!");
+  isWin();
+}
+
+function isWin() {
+  if (indexes.length == word.length) {
+    if (placeholderDiv.classList.contains("border-info")) {
+      placeholderDiv.classList.remove("border-info");
+    }
+    placeholderDiv.classList.add("border-success");
+  } else if (attempts >= parseInt(maxTries.value)) {
+    placeholderFinal.innerText = word;
+    if (placeholderDiv.classList.contains("border-info")) {
+      placeholderDiv.classList.remove("border-info");
+    }
+    placeholderDiv.classList.add("border-danger");
   }
 }
 
-function getHint() {}
+function borderRemove() {
+  if (placeholderDiv.classList.contains("border-success")) {
+    placeholderDiv.classList.remove("border-success");
+    placeholderDiv.classList.add("border-info");
+  } else if (placeholderDiv.classList.contains("border-danger")) {
+    placeholderDiv.classList.remove("border-danger");
+    placeholderDiv.classList.add("border-info");
+  }
+}
+
+// function getHint() {}
 
 function revealLetter() {
   let r;
+  let runs = 0;
   while (true) {
+    runs++;
     r = Math.floor(Math.random() * word.length);
-    if (!indexes.includes(r)) {
+    if (!indexes.includes(r) || runs >= 100) {
       break;
     }
   }
   indexes[indexes.length] = r;
+
   fill();
+  isWin();
 }
 function endGame() {
   gameSection.hidden = true;
