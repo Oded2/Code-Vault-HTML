@@ -88,12 +88,14 @@ let word;
 // });
 
 function chooseWord(min, max) {
+  let temp;
   for (let i = 0; i < words.length; i++) {
-    let temp = chooseWordNow();
+    temp = chooseWordNow();
     if (temp.length >= min && temp.length <= max) {
       return temp;
     }
   }
+  return temp;
 }
 
 function startGame() {
