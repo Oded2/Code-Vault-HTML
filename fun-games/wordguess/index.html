@@ -75,10 +75,12 @@
             class="col-md-9 col-12 border border-info rounded text-start p-3"
           >
             <p class="font-google-quicksand fs-5">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veniam
-              nemo numquam rerum est nisi expedita soluta ad amet ipsum
-              inventore, cum sint, cumque doloribus ea ut optio consectetur
-              laudantium cupiditate?
+              <span class="text-warning">Word Guesser</span> is an engaging and
+              sophisticated word-guessing game that challenges players to deduce
+              a hidden word. With each correct guess, the game reveals the place
+              of one letter, maintaining a stimulating level of difficulty.
+              Additionally, players are provided with a helpful list of guessed
+              letters, neatly arranged in alphabetical order.
             </p>
           </div>
           <div class="col-md-3">
@@ -129,7 +131,7 @@
               type="number"
               id="maxLen"
               class="form-control fs-4"
-              value="99"
+              value="8"
               min="0"
             />
           </div>
@@ -161,24 +163,22 @@
         </div>
       </div>
     </section>
-    <!-- <button class="btn btn-primary fs-1" onclick="test()">Test</button> -->
+
     <section hidden id="gameSection">
       <div class="container">
         <div class="row">
-          <div class="col-12 text-center">
+          <div class="col-12 text-center py-4">
             <h1 class="font-google-roboto-mono">Guess the Word</h1>
           </div>
           <div class="div col-12 border border-info text-center rounded">
             <p
               id="placeholderFinal"
               class="display-2 letter-spaced text-capitalize"
-            >
-              ########
-            </p>
+            ></p>
           </div>
         </div>
-        <div class="container-fluid bg-secondary-subtle rounded my-5 text-dark">
-          <div class="row p-3 d-flex align-items-center">
+        <div class="container-fluid my-5 text-dark">
+          <div class="row p-3 d-flex align-items-center bg-secondary-subtle">
             <div class="col-md-6">
               <h1 class="font-google-quicksand text-center">
                 Enter Your Guess
@@ -188,27 +188,94 @@
               <input
                 type="text"
                 id="userGuess"
-                class="form-control"
+                class="form-control fs-3"
                 placeholder="Place your guess"
               />
             </div>
             <div class="col-md-2 d-flex justify-content-center">
               <button
-                class="btn btn-primary w-100 my-2 my-md-0"
+                class="btn btn-primary w-100 my-2 my-md-0 fs-3"
                 id="checkButton"
+                onclick="check()"
               >
                 Check
               </button>
             </div>
           </div>
-          <div class="row p-3 bg-dark-subtle">
-            <div class="col-md-6 p-3">
-              <h1 class="font-google-quicksand text-center">Letters Used</h1>
+          <div class="row py-3 bg-dark-subtle">
+            <div class="col-md-4 py-1 d-flex-center">
+              <h1 class="font-google-quicksand fw-bold">Letters Used:</h1>
             </div>
-            <div class="col-md-6 p-3">
-              <p class="display-6">Hello</p>
+            <div class="col-md-8 text-start">
+              <p class="display-6" id="lettersUsed"></p>
             </div>
-            <div class="display-6" id="lettersUsed">a, b, c, d</div>
+          </div>
+          <div class="row bg-info-subtle p-3" id="hintsDiv" hidden>
+            <div class="col-md-3 my-2 my-md-0 d-flex align-items-center">
+              <button
+                class="btn btn-info w-100 fs-3 text-light"
+                onclick="getHint()"
+              >
+                Get Hint
+              </button>
+            </div>
+            <div class="col-md-3" id="definitionDiv" hidden>
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="font-google-quicksand fw-bold text-center">
+                    Definition
+                  </h3>
+                </div>
+                <div class="col-12">
+                  <p id="hintDefinition" class="fs-6">
+                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+                    Minus, consequatur!
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" id="synonymDiv" hidden>
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="font-google-quicksand fw-bold text-center">
+                    Synonym
+                  </h3>
+                </div>
+                <div class="col-12">
+                  <p id="hintSynonym" class="fs-4 text-center">Lorem.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3" id="posDiv" hidden>
+              <div class="row">
+                <div class="col-12">
+                  <h3 class="font-google-quicksand fw-bold text-center">PoS</h3>
+                </div>
+                <div class="col-12">
+                  <p id="hintPoS" class="fs-4 text-center">Lorem.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row py-3 bg-secondary-subtle">
+            <div class="col-md-6 text-center">
+              <button
+                class="btn btn-warning text-light w-100 h-100 fs-3"
+                id="restartButton"
+                onclick="startGame()"
+              >
+                Restart
+              </button>
+            </div>
+            <div class="col-md-6 my-md-0 my-2 text-start">
+              <button
+                class="btn btn-danger w-100 h-100 fs-3 text-light"
+                id="endButton"
+                onclick="endGame()"
+              >
+                End Game
+              </button>
+            </div>
           </div>
         </div>
       </div>
