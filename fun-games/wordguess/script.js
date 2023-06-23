@@ -104,7 +104,8 @@ function startGame() {
   userGuess.value = "";
 
   triesLeft.max = maxTries.value;
-  updateTries();
+  triesLeft.value = maxTries.value;
+  triesLeftNum.innerText = maxTries.value;
   attempts = 0;
   indexes = [];
   lettersTried = [];
