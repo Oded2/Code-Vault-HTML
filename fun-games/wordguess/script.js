@@ -31,18 +31,18 @@ let hintsData;
 let wordDefinition;
 let wordSynonym;
 let wordAcronym;
-async function getHintInfo(englishWord) {
-  try {
-    const response = await fetch(
-      "https://api.dictionaryapi.dev/api/v2/entries/en/" + englishWord
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Error:", error);
-    return;
-  }
-}
+// async function getHintInfo(englishWord) {
+//   try {
+//     const response = await fetch(
+//       "https://api.dictionaryapi.dev/api/v2/entries/en/" + englishWord
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error("Error:", error);
+//     return;
+//   }
+// }
 
 async function getWords() {
   try {
@@ -77,15 +77,15 @@ function chooseWordNow() {
   return randomWord;
 }
 
-let word = "cheetah";
+let word;
 
 // To see if hints are checked do hints.checked
 // Temporary;
-// document.addEventListener("DOMContentLoaded", () => {
-//   titleSection.hidden = true;
-//   gameSection.hidden = false;
-//   hintsDiv.hidden = false;
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  titleSection.hidden = true;
+  gameSection.hidden = false;
+  hintsDiv.hidden = false;
+});
 
 function chooseWord(min, max) {
   for (let i = 0; i < words.length; i++) {
@@ -103,13 +103,12 @@ function startGame() {
   if (hints.checked) {
     hintsDiv.hidden = false;
   }
-  definitionDiv.hidden = true;
   lettersUsed.innerText = "";
 
   const min = minLen.value;
   const max = maxLen.value;
   word = chooseWord(min, max);
-  fetchDataHints(word);
+  // fetchDataHints(word);
   userGuess.maxLength = word.length;
   // console.log("Word is: " + word);
   placeholderFinal.innerText = fill(placeholder.value, indexes, word);
@@ -167,11 +166,13 @@ function check() {
   }
 }
 
-function getHint() {
-  definitionDiv.hidden = false;
-  definition.innerText = wordDefinition;
-}
+function getHint() {}
 
+function revealLetter() {
+  indexes[indexes.length] = Math.floor(Math.random() * word.length);
+  console.log(indexes);
+  fill(placeholder.value, indexes, word);
+}
 function endGame() {
   gameSection.hidden = true;
   titleSection.hidden = false;

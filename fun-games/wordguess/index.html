@@ -211,15 +211,27 @@
             </div>
           </div>
           <div class="row bg-info-subtle p-3" id="hintsDiv" hidden>
-            <div class="col-md-3 my-2 my-md-0 d-flex align-items-center">
+            <!-- <div
+              class="col-md-6 my-2 my-md-0 d-flex justify-content-center align-items-center"
+            >
               <button
-                class="btn btn-info w-100 fs-3 text-light"
+                class="btn btn-info fs-3 text-light w-50"
                 onclick="getHint()"
               >
                 Get Hint
               </button>
+            </div> -->
+            <div
+              class="col-md-12 my-2 my-md-0 d-flex justify-content-center align-items-center"
+            >
+              <button
+                class="btn btn-info fs-3 text-light w-50"
+                onclick="revealLetter()"
+              >
+                Reveal Letter
+              </button>
             </div>
-            <div class="col-md-3" id="definitionDiv" hidden>
+            <!-- <div class="col-md-3" id="definitionDiv" hidden>
               <div class="row">
                 <div class="col-12">
                   <h3 class="font-google-quicksand fw-bold text-center">
@@ -255,7 +267,7 @@
                   <p id="hintPoS" class="fs-4 text-center">Lorem.</p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
           <div class="row py-3 bg-secondary-subtle">
             <div class="col-md-6 text-center">
