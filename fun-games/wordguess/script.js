@@ -81,11 +81,11 @@ let word;
 
 // To see if hints are checked do hints.checked
 // Temporary;
-document.addEventListener("DOMContentLoaded", () => {
-  titleSection.hidden = true;
-  gameSection.hidden = false;
-  hintsDiv.hidden = false;
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   titleSection.hidden = true;
+//   gameSection.hidden = false;
+//   hintsDiv.hidden = false;
+// });
 
 function chooseWord(min, max) {
   for (let i = 0; i < words.length; i++) {
@@ -111,26 +111,27 @@ function startGame() {
   // fetchDataHints(word);
   userGuess.maxLength = word.length;
   // console.log("Word is: " + word);
-  placeholderFinal.innerText = fill(placeholder.value, indexes, word);
+  fill();
   titleSection.hidden = true;
   gameSection.hidden = false;
 }
 
-function fill(placeholder, indexes, word) {
+function fill() {
   final_word = "";
   for (let i = 0; i < word.length; i++) {
     let current = word[i];
     if (indexes.includes(i)) {
       final_word += current;
     } else {
-      final_word += placeholder;
+      final_word += placeholder.value;
     }
   }
-  return final_word;
+
+  placeholderFinal.innerText = final_word;
 }
 
 function test() {
-  placeholderFinal.innerText = fill(placeholder.value, indexes, word);
+  fill();
 }
 
 function check() {
@@ -145,7 +146,7 @@ function check() {
       }
     }
     if (!word.includes(user)) {
-      if (!lettersTried.includes(user)) {
+      if (!lettersTried.includes(user) && user.length == 1) {
         lettersTried[lettersTried.length] = user;
       }
       lettersUsed.innerText = "";
@@ -158,7 +159,7 @@ function check() {
         }
       }
     }
-    placeholderFinal.innerText = fill(placeholder.value, indexes, word);
+    fill();
   }
   userGuess.value = "";
   if (placeholderFinal.innerText.toLowerCase() == word) {
@@ -169,9 +170,15 @@ function check() {
 function getHint() {}
 
 function revealLetter() {
-  indexes[indexes.length] = Math.floor(Math.random() * word.length);
-  console.log(indexes);
-  fill(placeholder.value, indexes, word);
+  let r;
+  while (true) {
+    r = Math.floor(Math.random() * word.length);
+    if (!indexes.includes(r)) {
+      break;
+    }
+  }
+  indexes[indexes.length] = r;
+  fill();
 }
 function endGame() {
   gameSection.hidden = true;
