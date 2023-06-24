@@ -196,12 +196,12 @@ function check() {
 }
 
 function isWin() {
-  if (indexes.length == word.length) {
+  if (indexes.length == word.length && !attempts >= maxTries.value) {
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
     }
     placeholderDiv.classList.add("border-success");
-  } else if (attempts >= parseInt(maxTries.value)) {
+  } else if (attempts >= maxTries.value) {
     placeholderFinal.innerText = word;
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
