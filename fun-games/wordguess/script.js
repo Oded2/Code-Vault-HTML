@@ -34,6 +34,7 @@ let hintsData;
 let wordDefinition;
 let wordSynonym;
 let wordAcronym;
+let win = false;
 // async function getHintInfo(englishWord) {
 //   try {
 //     const response = await fetch(
@@ -161,7 +162,12 @@ function fill() {
 
 function check() {
   const user = userGuess.value.toLowerCase();
-  if (user != "" && !lettersTried.includes(user) && !word.includes(user)) {
+  if (
+    user != "" &&
+    !lettersTried.includes(user) &&
+    !word.includes(user) &&
+    !win
+  ) {
     attempts++;
   }
 
@@ -197,6 +203,7 @@ function check() {
 
 function isWin() {
   if (indexes.length == word.length && attempts <= maxTries.value) {
+    win = true;
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
     }
