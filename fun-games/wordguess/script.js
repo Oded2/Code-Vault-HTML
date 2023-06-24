@@ -97,6 +97,9 @@ function chooseWord(min, max) {
       return temp;
     }
   }
+  alert(
+    "Could not find a word within your minimum and maximum range, you will be selected a random word instead."
+  );
   return temp;
 }
 function updateTries() {
@@ -121,9 +124,19 @@ function startGame() {
     hintsDiv.hidden = true;
   }
   lettersUsed.innerText = "";
+  let min;
+  let max;
+  if (minLen.value == "") {
+    min = 0;
+  } else {
+    min = minLen.value;
+  }
+  if (maxLen.value == "") {
+    max = 999;
+  } else {
+    max = maxLen.value;
+  }
 
-  const min = minLen.value;
-  const max = maxLen.value;
   word = chooseWord(min, max);
   // fetchDataHints(word);
   userGuess.maxLength = word.length;
