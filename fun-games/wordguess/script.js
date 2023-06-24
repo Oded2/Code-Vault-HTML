@@ -103,8 +103,7 @@ function chooseWord(min, max) {
 function startGame() {
   userGuess.value = "";
 
-  triesLeft.max = maxTries.value;
-  triesLeft.value = maxTries.value;
+  updateTries();
   triesLeftNum.innerText = maxTries.value;
   attempts = 0;
   indexes = [];
@@ -113,6 +112,8 @@ function startGame() {
   borderRemove();
   if (hints.checked) {
     hintsDiv.hidden = false;
+  } else {
+    hintsDiv.hidden = true;
   }
   lettersUsed.innerText = "";
 
