@@ -25,7 +25,7 @@ userGuess.addEventListener("keypress", function (event) {
     check();
   }
 });
-let attempts;
+let attempts = 0;
 let indexes = [];
 let lettersTried = [];
 let hintsUsed = 0;
@@ -99,12 +99,17 @@ function chooseWord(min, max) {
   }
   return temp;
 }
-
+function updateTries() {
+  if (maxTries.value - attempts >= 0) {
+    triesLeft.value = maxTries.value - attempts;
+    triesLeftNum.innerText = maxTries.value - attempts;
+  }
+}
 function startGame() {
   userGuess.value = "";
 
+  triesLeft.max = maxTries.value;
   updateTries();
-  triesLeftNum.innerText = maxTries.value;
   attempts = 0;
   indexes = [];
   lettersTried = [];
@@ -122,7 +127,6 @@ function startGame() {
   word = chooseWord(min, max);
   // fetchDataHints(word);
   userGuess.maxLength = word.length;
-  console.log("Word is: " + word);
   fill();
   titleSection.hidden = true;
   gameSection.hidden = false;
@@ -140,14 +144,6 @@ function fill() {
   }
 
   placeholderFinal.innerText = final_word;
-}
-
-function updateTries() {
-  if (maxTries.value - attempts >= 0) {
-    triesLeft.value = maxTries.value - attempts;
-
-    triesLeftNum.innerText = maxTries.value - attempts;
-  }
 }
 
 function check() {
