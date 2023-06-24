@@ -196,7 +196,7 @@ function check() {
 }
 
 function isWin() {
-  if (indexes.length == word.length && !attempts >= maxTries.value) {
+  if (indexes.length == word.length && attempts <= maxTries.value) {
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
     }
