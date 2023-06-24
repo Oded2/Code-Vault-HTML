@@ -98,7 +98,7 @@ function chooseWord(min, max) {
     }
   }
   alert(
-    "Could not find a word within your minimum and maximum range, you will be selected a random word instead."
+    "Could not find a word within your minimum and maximum range; you will be selected a random word instead."
   );
   return temp;
 }
