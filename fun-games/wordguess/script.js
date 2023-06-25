@@ -111,10 +111,10 @@ function updateTries() {
 }
 function startGame() {
   userGuess.value = "";
-
   triesLeft.max = maxTries.value;
-  updateTries();
   attempts = 0;
+  updateTries();
+
   indexes = [];
   lettersTried = [];
   hintsUsed = 0;
