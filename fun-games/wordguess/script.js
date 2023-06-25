@@ -35,18 +35,6 @@ let wordDefinition;
 let wordSynonym;
 let wordAcronym;
 let win = false;
-// async function getHintInfo(englishWord) {
-//   try {
-//     const response = await fetch(
-//       "https://api.dictionaryapi.dev/api/v2/entries/en/" + englishWord
-//     );
-//     const data = await response.json();
-//     return data;
-//   } catch (error) {
-//     console.error("Error:", error);
-//     return;
-//   }
-// }
 
 async function getWords() {
   try {
@@ -65,13 +53,6 @@ async function fetchDataWord() {
   words = await getWords();
 }
 
-async function fetchDataHints(wordHint) {
-  hintsData = await getHintInfo(wordHint);
-  let data = hintsData[0];
-  wordDefinition = data["meanings"][0]["definitions"][0]["definition"];
-  // console.log(wordDefinition);
-}
-
 fetchDataWord();
 
 function chooseWordNow() {
@@ -84,11 +65,11 @@ function chooseWordNow() {
 let word;
 
 // Temporary;
-// document.addEventListener("DOMContentLoaded", () => {
-//   titleSection.hidden = true;
-//   gameSection.hidden = false;
-//   hintsDiv.hidden = false;
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  titleSection.hidden = true;
+  gameSection.hidden = false;
+  hintsDiv.hidden = false;
+});
 
 function chooseWord(min, max) {
   let temp;
@@ -140,7 +121,6 @@ function startGame() {
   }
 
   word = chooseWord(min, max);
-  // fetchDataHints(word);
   userGuess.maxLength = word.length;
   fill();
   titleSection.hidden = true;
@@ -227,8 +207,6 @@ function borderRemove() {
     placeholderDiv.classList.add("border-info");
   }
 }
-
-// function getHint() {}
 
 function revealLetter() {
   let r;
