@@ -110,6 +110,7 @@ function updateTries() {
   }
 }
 function startGame() {
+  win = false;
   userGuess.value = "";
   triesLeft.max = maxTries.value;
   attempts = 0;
