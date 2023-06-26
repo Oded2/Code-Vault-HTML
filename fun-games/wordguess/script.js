@@ -66,11 +66,11 @@ function chooseWordNow() {
 let word;
 
 // Temporary;
-document.addEventListener("DOMContentLoaded", () => {
-  titleSection.hidden = true;
-  gameSection.hidden = false;
-  hintsDiv.hidden = false;
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   titleSection.hidden = true;
+//   gameSection.hidden = false;
+//   hintsDiv.hidden = false;
+// });
 
 function chooseWord(min, max) {
   let temp;
