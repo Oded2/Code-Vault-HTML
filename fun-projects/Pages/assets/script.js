@@ -225,7 +225,6 @@ function paste() {
     .readText()
     .then((text) => {
       clip = text;
-      console.log(clip);
       if (title == "Encrypter") {
         document.getElementById("userEncrypt").value = clip;
         encrypt();
