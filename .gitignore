@@ -1,5 +1,16 @@
 # Visual Studio Code
 .vscode/
 
+# IntelliJ
+.idea/
+
 # Custom
 temporary/
+
+
+
+
+
+
+
+
