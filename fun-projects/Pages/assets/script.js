@@ -77,8 +77,7 @@ var isNumeric = /^-?\d+(\.\d+)?$/;
 function update() {
   const password = document.getElementById("password").value;
   const hashPass = hash(password);
-  document.getElementById("passLabel").innerHTML =
-    "Hash: " + hashPass + "&nbsp; &nbsp;";
+  document.getElementById("passLabel").innerHTML = hashPass;
   if (title == "Encrypter") {
     encrypt();
   } else if (title == "Decrypter") {

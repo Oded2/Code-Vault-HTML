@@ -13,6 +13,7 @@
     <script src="../assets/script.js"></script>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../assets/style.css" />
+    <link rel="stylesheet" href="../../../HomeAssets/style.css" />
     <!-- Font Awesome  -->
     <link
       rel="stylesheet"
@@ -75,7 +76,83 @@
         </div>
       </div>
     </header>
-    <div>
+    <section class="d-none d-sm-block">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 py-3">
+            <h1 class="font-google-work-sans text-center">Decrypt</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-auto">
+            <h2 class="font-google-signika-negative">Enter a Password:</h2>
+          </div>
+          <div class="col-5">
+            <input
+              class="form-control fs-5"
+              type="text"
+              id="password"
+              oninput="update()"
+            />
+          </div>
+          <div class="col-auto">
+            <h2 class="font-google-signika-negative">
+              Hash: <span id="passLabel"></span>
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid p-5">
+        <div class="row mt-3">
+          <div class="col-6">
+            <h2 class="font-google-quicksand text-center fw-bold">
+              Encrypted Message
+            </h2>
+          </div>
+          <div class="col-6">
+            <h2 class="font-google-quicksand text-center fw-bold">
+              Decrypted Message
+            </h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <textarea
+              oninput="decrypt()"
+              placeholder="Place your original message here"
+              class="form-control"
+              id="userDecrypt"
+              rows="15"
+            ></textarea>
+          </div>
+          <div class="col-6">
+            <textarea
+              placeholder="Output will be shown here"
+              class="form-control"
+              id="output"
+              rows="15"
+              disabled
+            ></textarea>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-6">
+            <button class="btn btn-outline-dark w-100" onclick="paste()">
+              Paste
+            </button>
+          </div>
+          <div class="col-6">
+            <button
+              class="btn btn-outline-dark w-100"
+              onclick="copytoClipboard()"
+            >
+              Copy to Clipboard
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="d-block d-sm-none">
       <header class="pt-5 bg-surface-secondary">
         <div class="container-xl">
           <div>
@@ -110,7 +187,6 @@
                 class="form-control"
                 id="userDecrypt"
                 rows="10"
-                style="resize: none"
               ></textarea>
             </div>
           </div>
@@ -128,7 +204,6 @@
                 class="form-control"
                 id="output"
                 rows="10"
-                style="resize: none"
                 disabled
               ></textarea>
             </div>

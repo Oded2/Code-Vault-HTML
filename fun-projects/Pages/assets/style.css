@@ -27,3 +27,7 @@ input::-webkit-inner-spin-button {
   visibility: hidden !important;
   cursor: default !important;
 }
+
+textarea {
+  resize: none !important;
+}
