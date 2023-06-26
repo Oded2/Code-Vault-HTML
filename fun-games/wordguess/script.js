@@ -19,6 +19,7 @@ const posDiv = document.getElementById("posDiv");
 const placeholderDiv = document.getElementById("placeholderDiv");
 const triesLeft = document.getElementById("triesLeft");
 const triesLeftNum = document.getElementById("triesLeftNum");
+const revealButton = document.getElementById("revealButton");
 userGuess.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -65,11 +66,11 @@ function chooseWordNow() {
 let word;
 
 // Temporary;
-// document.addEventListener("DOMContentLoaded", () => {
-//   titleSection.hidden = true;
-//   gameSection.hidden = false;
-//   hintsDiv.hidden = false;
-// });
+document.addEventListener("DOMContentLoaded", () => {
+  titleSection.hidden = true;
+  gameSection.hidden = false;
+  hintsDiv.hidden = false;
+});
 
 function chooseWord(min, max) {
   let temp;
@@ -92,6 +93,9 @@ function updateTries() {
 }
 function startGame() {
   win = false;
+  if (revealButton.disabled) {
+    revealButton.disabled = false;
+  }
   userGuess.value = "";
   triesLeft.max = maxTries.value;
   attempts = 0;
@@ -185,12 +189,14 @@ function check() {
 function isWin() {
   if (indexes.length == word.length && attempts <= maxTries.value) {
     win = true;
+
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
     }
     placeholderDiv.classList.add("border-success");
   } else if (attempts >= maxTries.value) {
     placeholderFinal.innerText = word;
+    revealButton.disabled = true;
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
     }
