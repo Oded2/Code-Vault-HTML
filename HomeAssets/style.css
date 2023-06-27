@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Mulish&family=Quicksand:wght@300;400;500;600;700&family=Roboto+Mono&family=Signika+Negative:wght@300;400;500;600;700&family=Work+Sans:wght@400;700&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Caveat&family=Mulish&family=Quicksand:wght@300;400;500;600;700&family=Roboto+Mono&family=Signika+Negative:wght@300;400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap");
 .font-google-quicksand {
   font-family: "Quicksand", sans-serif;
 }
@@ -111,4 +110,7 @@ input:checked + .slider:before {
 
 .fw-500 {
   font-weight: 500 !important;
+}
+.fw-600 {
+  font-weight: 600 !important;
 }

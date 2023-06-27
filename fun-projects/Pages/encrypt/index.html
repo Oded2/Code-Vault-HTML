@@ -28,58 +28,63 @@
     <link rel="stylesheet" href="../../../HomeAssets/style.css" />
   </head>
   <body>
-    <header class="p-3 text-bg-dark">
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark">
       <div class="container">
-        <div
-          class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start"
+        <a href="../../../" class="navbar-brand"
+          >Code <span class="text-warning">Vault</span></a
         >
-          <ul
-            class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0"
-          >
-            <li>
-              <a href="../../../" class="mt-1 btn border text-white"
-                >Code <span class="text-warning">Vault</span></a
-              >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navmenu"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navmenu">
+          <ul class="navbar-nav ms-md-5">
+            <li class="class-item">
+              <a href="../../" class="nav-link">Home</a>
             </li>
-            <li>
-              <a href="../../" class="nav-link px-2 text-white">Home</a>
+            <li class="class-item">
+              <a class="nav-link active">Encrypt</a>
             </li>
-            <li>
-              <a class="nav-link px-2 text-secondary">Encrypt</a>
+            <li class="class-item">
+              <a href="../decrypt/" class="nav-link">Decrypt</a>
             </li>
-            <li>
-              <a href="../decrypt/" class="nav-link px-2 text-white">Decrypt</a>
-            </li>
-            <li>
-              <a href="../ccvalidator/" class="nav-link px-2 text-white"
+            <li class="class-item">
+              <a href="../ccvalidator/" class="nav-link"
                 >Credit Card Validator</a
               >
             </li>
-            <li>
-              <a href="../ccgenerator" class="nav-link px-2 text-white"
+            <li class="class-item">
+              <a href="../ccgenerator/" class="nav-link"
                 >Credit Card Generator</a
               >
             </li>
-            <li>
-              <a href="../photodata" class="nav-link px-2 text-white"
-                >Metadata Viewer</a
+            <li class="class-item">
+              <a href="../photodata/" class="nav-link">Metadata Viewer</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav ms-auto">
+            <li class="class-item">
+              <a href="../../../about/" class="nav-link">About</a>
+            </li>
+            <li class="class-item">
+              <a href="mailto:odedconnect@gmail.com" class="nav-link"
+                ><i class="fa-solid fa-envelope"></i> Contact</a
               >
             </li>
           </ul>
-
-          <div class="text-end">
-            <a class="btn btn-primary" href="mailto:odedconnect@gmail.com">
-              <i class="fa fa-envelope"></i> Contact
-            </a>
-          </div>
         </div>
       </div>
-    </header>
+    </nav>
+
     <section>
       <div class="container">
         <div class="row">
           <div class="col-md-12 py-3">
-            <h1 class="font-google-work-sans text-sm-center">Encrypt</h1>
+            <h1 class="font-google-work-sans text-sm-center fw-600">Encrypt</h1>
           </div>
         </div>
         <div class="row">
@@ -151,5 +156,10 @@
         </div>
       </div>
     </section>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
