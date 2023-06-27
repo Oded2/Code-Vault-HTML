@@ -189,7 +189,7 @@ function check() {
 function isWin() {
   if (indexes.length == word.length && attempts <= maxTries.value) {
     win = true;
-
+    revealButton.disabled = true;
     if (placeholderDiv.classList.contains("border-info")) {
       placeholderDiv.classList.remove("border-info");
     }
