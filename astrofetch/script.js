@@ -4,6 +4,7 @@ const endDate = document.getElementById("endDate");
 const imageTitle = document.getElementById("imageTitle");
 const mainImage = document.getElementById("mainImage");
 const youtubeFrame = document.getElementById("youtube");
+const explanation = document.getElementById("explanation");
 let today;
 
 const url = new URL("https://api.nasa.gov/planetary/apod");
@@ -55,6 +56,7 @@ async function submit() {
   const currentTitle = temp[0]["title"];
   const currentExplanation = temp[0]["explanation"];
   imageTitle.innerText = currentTitle;
+  explanation.innerText = currentExplanation;
   if (currentImage.includes("youtube.com")) {
     youtubeFrame.src =
       currentImage.replace(/youtube.com/g, "youtube-nocookie.com") +
