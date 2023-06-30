@@ -108,19 +108,10 @@
       </div>
       <div class="container-fluid p-sm-5">
         <div class="row mt-3">
-          <div class="col-6">
+          <div class="col-md-6">
             <h2 class="font-google-quicksand text-center fw-bold">
               Original Message
             </h2>
-          </div>
-          <div class="col-6">
-            <h2 class="font-google-quicksand text-center fw-bold">
-              Encrypted Message
-            </h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
             <textarea
               oninput="encrypt()"
               placeholder="Place your original message here"
@@ -128,8 +119,14 @@
               id="userEncrypt"
               rows="15"
             ></textarea>
+            <button class="btn btn-outline-dark w-100 mt-2" onclick="paste()">
+              Paste
+            </button>
           </div>
-          <div class="col-6">
+          <div class="col-md-6 mt-4 mt-md-0">
+            <h2 class="font-google-quicksand text-center fw-bold">
+              Encrypted Message
+            </h2>
             <textarea
               placeholder="Encrypted message will be displayed here"
               class="form-control"
@@ -137,17 +134,8 @@
               rows="15"
               disabled
             ></textarea>
-          </div>
-        </div>
-        <div class="row mt-2">
-          <div class="col-6">
-            <button class="btn btn-outline-dark w-100 h-100" onclick="paste()">
-              Paste
-            </button>
-          </div>
-          <div class="col-6">
             <button
-              class="btn btn-outline-dark w-100 h-100"
+              class="btn btn-outline-dark w-100 my-2"
               onclick="copytoClipboard()"
             >
               Copy to Clipboard
