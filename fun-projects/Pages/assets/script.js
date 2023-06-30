@@ -145,7 +145,11 @@ function shiftDown(letter, num) {
 }
 
 function hash(pass) {
+  if (pass.length == 0) {
+    return 0;
+  }
   let final = 0;
+  let temp;
   for (i = 0; i < pass.length; i++) {
     let multiplier = pass.length;
     const currentIndex = pass[i];
@@ -153,15 +157,18 @@ function hash(pass) {
       if (isUpper.test(currentIndex)) {
         multiplier *= 2;
       }
-      final += (abc[currentIndex.toLowerCase()] + 1) * multiplier;
+      temp = (abc[currentIndex.toLowerCase()] + 1) * multiplier;
     } else if (isNumeric.test(currentIndex)) {
-      final += parseInt(currentIndex);
+      temp = parseInt(currentIndex);
     } else if (currentIndex in charMap) {
-      final += (charMap[currentIndex] + 1) * multiplier;
+      temp = (charMap[currentIndex] + 1) * multiplier;
     } else {
-      final += 1;
+      temp = 1;
     }
+    final += temp;
   }
+
+  final = parseInt(final.toString().replace(/0/g, "1"));
   return final;
 }
 
