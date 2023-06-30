@@ -60,10 +60,22 @@
             <h1>Astro <span class="text-primary">Fetch</span></h1>
             <div class="container-fluid border border-info rounded">
               <p class="fs-5 text-start">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-                ducimus voluptates, consectetur iure earum deleniti ad atque
-                rem, harum libero nisi qui voluptatibus laborum officiis minus
-                doloribus. Praesentium, sequi ipsum!
+                AstroFetch is a powerful tool that utilizes the nasa api (<a
+                  href="api.nasa.gov"
+                  class="link-light"
+                  >api.nasa.gov</a
+                >) and fetches the Astronomy Picture Of the Day (APOD) from your
+                specified date.
+                <span class="text-danger"
+                  >This website is NOT ready yet. For a finished version of this
+                  please use the
+                  <a
+                    class="link-danger"
+                    href="https://github.com/Oded2/AstroFetch"
+                    >python</a
+                  >
+                  code.</span
+                >
               </p>
             </div>
           </div>
@@ -78,13 +90,23 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
-            <h2>Pick your start date</h2>
-            <input type="date" id="startDate" class="form-control" />
+          <div class="col-md-12">
+            <h2>Pick the date</h2>
+            <input
+              min="1995-06-16"
+              type="date"
+              id="startDate"
+              class="form-control"
+            />
           </div>
-          <div class="col-md-6 mt-md-0 mt-5">
+          <div class="col-md-6 mt-md-0 mt-5" hidden>
             <h2>Pick your end date</h2>
-            <input type="date" id="startDate" class="form-control" />
+            <input
+              min="1995-06-16"
+              type="date"
+              id="endDate"
+              class="form-control"
+            />
           </div>
         </div>
         <div class="row my-5">
@@ -95,6 +117,7 @@
               id="apiKey"
               class="form-control"
               placeholder="API key"
+              value="DEMO_KEY"
             />
           </div>
           <div class="col-md-1 mt-4 mt-md-0">
@@ -110,26 +133,28 @@
           </div>
           <div class="col-md-3 mt-1 mt-md-0">
             <h2 class="d-none d-md-block">&nbsp;</h2>
-            <a href="https://api.nasa.gov" class="btn btn-primary w-100"
-              >Submit</a
-            >
+            <button onclick="submit()" class="btn btn-primary w-100">
+              Submit
+            </button>
           </div>
         </div>
       </div>
     </section>
     <section>
       <div class="container">
-        <h1 class="text-center" id="imageTitle">Koala</h1>
+        <h1 class="text-center" id="imageTitle"><em>Nasa Logo</em></h1>
         <div
           class="container-fluid d-flex justify-content-center vh-sm-75 vh-50"
         >
           <img
-            src="https://cdn.britannica.com/26/162626-050-3534626F/Koala.jpg"
-            alt=""
+            src="../HomeAssets/images/svg/NASA.svg"
+            alt="Picture of the NASA logo"
             class="img-fluid object-fit-contain rounded"
+            id="mainImage"
           />
         </div>
-        <div class="row">
+
+        <div class="row mt-4" hidden>
           <div class="col-6">
             <button class="btn btn-warning w-100">Back</button>
           </div>
