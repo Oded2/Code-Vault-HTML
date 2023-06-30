@@ -53,7 +53,7 @@
         </div>
       </div>
     </nav>
-    <section class="bg-dark text-light p-5 p-lg-1 text-center text-sm-start">
+    <section class="p-5 p-lg-1 text-center text-sm-start">
       <div class="container">
         <div class="d-sm-flex align-items-center justify-content-between">
           <div>
@@ -99,11 +99,11 @@
           </div>
           <div class="col-md-1 mt-4 mt-md-0">
             <h2 class="d-none d-md-block">&nbsp;</h2>
-            <button class="btn btn-secondary w-100">
+            <button class="btn btn-secondary w-100" onclick="pasteToApi()">
               <span>
                 <i class="fa-regular fa-clipboard"></i
                 ><span class="d-md-none">
-                  &nbsp; &nbsp;Paste from clipboard</span
+                  &nbsp;Paste from clipboard</span
                 ></span
               >
             </button>
@@ -111,8 +111,30 @@
           <div class="col-md-3 mt-1 mt-md-0">
             <h2 class="d-none d-md-block">&nbsp;</h2>
             <a href="https://api.nasa.gov" class="btn btn-primary w-100"
-              >Need Help?</a
+              >Submit</a
             >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="container">
+        <h1 class="text-center" id="imageTitle">Koala</h1>
+        <div
+          class="container-fluid d-flex justify-content-center vh-sm-75 vh-50"
+        >
+          <img
+            src="https://cdn.britannica.com/26/162626-050-3534626F/Koala.jpg"
+            alt=""
+            class="img-fluid object-fit-contain rounded"
+          />
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <button class="btn btn-warning w-100">Back</button>
+          </div>
+          <div class="col-6">
+            <button class="btn btn-warning w-100">Next</button>
           </div>
         </div>
       </div>
