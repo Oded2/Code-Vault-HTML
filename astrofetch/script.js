@@ -3,6 +3,7 @@ const startDate = document.getElementById("startDate");
 const endDate = document.getElementById("endDate");
 const imageTitle = document.getElementById("imageTitle");
 const mainImage = document.getElementById("mainImage");
+const youtubeFrame = document.getElementById("youtube");
 let today;
 
 const url = new URL("https://api.nasa.gov/planetary/apod");
@@ -48,14 +49,24 @@ async function submit() {
     startDate.value +
     "&end_date=" +
     endDate.value;
-  console.log("URL", newurl);
-  let temp = await fetchData(newurl);
-  console.log(temp);
-  let currentImage = temp[0]["url"];
-  let currentTitle = temp[0]["title"];
-  mainImage.src = currentImage;
-  mainImage.alt = currentTitle;
+
+  const temp = await fetchData(newurl);
+  const currentImage = temp[0]["url"];
+  const currentTitle = temp[0]["title"];
+  const currentExplanation = temp[0]["explanation"];
   imageTitle.innerText = currentTitle;
+  if (currentImage.includes("youtube.com")) {
+    youtubeFrame.src =
+      currentImage.replace(/youtube.com/g, "youtube-nocookie.com") +
+      "&autoplay=1&mute=1";
+    youtubeFrame.hidden = false;
+    mainImage.hidden = true;
+  } else {
+    youtubeFrame.hidden = true;
+    mainImage.hidden = false;
+    mainImage.src = currentImage;
+    mainImage.alt = currentTitle;
+  }
 }
 
 async function fetchData(url) {
