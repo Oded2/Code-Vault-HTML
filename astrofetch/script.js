@@ -34,8 +34,12 @@ function formatDate(dateStr) {
 }
 
 async function paste() {
-  const clip = await navigator.clipboard.readText();
-  return clip;
+  try {
+    const clip = await navigator.clipboard.readText();
+    return clip;
+  } catch (error) {
+    console.error(error);
+  }
 }
 
 async function pasteToApi() {
