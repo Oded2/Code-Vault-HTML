@@ -34,13 +34,6 @@ function formatDate(dateStr) {
 }
 
 async function paste() {
-  const permission = await navigator.permissions.query({
-    name: "clipboard-read",
-  });
-  if (permission.state == "denied") {
-    alert("Clipboard access was denied");
-    return;
-  }
   const clip = await navigator.clipboard.readText();
   return clip;
 }
