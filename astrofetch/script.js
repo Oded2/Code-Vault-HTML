@@ -69,7 +69,6 @@ async function submit() {
     endDate.value;
 
   data = await fetchData(newurl);
-  console.log(data);
   displayImage(0);
   buttonDiv.hidden = false;
   explanationDiv.hidden = false;
