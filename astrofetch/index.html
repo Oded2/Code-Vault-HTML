@@ -65,17 +65,17 @@
                   class="link-light"
                   >api.nasa.gov</a
                 >) and fetches the Astronomy Picture Of the Day (APOD) from your
-                specified date.
-                <span class="text-danger"
-                  >This website is NOT ready yet. For a finished version of this
-                  please use the
-                  <a
-                    class="link-danger"
-                    href="https://github.com/Oded2/AstroFetch"
-                    >python</a
-                  >
-                  code.</span
+                start date to your end date, allowing you to browse the pictures
+                seamlessly.
+              </p>
+            </div>
+            <div class="container-fluid">
+              <p class="fs-6 text-start">
+                Want to download images instead? Use the
+                <a href="https://github.com/Oded2/AstroFetch" class="link-light"
+                  >python</a
                 >
+                version!
               </p>
             </div>
           </div>
@@ -91,7 +91,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-6">
-            <h2>Pick the date</h2>
+            <h2>Pick your start date</h2>
             <input
               min="1995-06-16"
               type="date"
@@ -110,8 +110,8 @@
           </div>
         </div>
         <div class="row my-5">
-          <div class="col-md-8">
-            <h2>Enter your Nasa API key</h2>
+          <div class="col-md-5">
+            <h2>Nasa API key</h2>
             <input
               type="text"
               id="apiKey"
@@ -119,6 +119,11 @@
               placeholder="API key"
               value="DEMO_KEY"
             />
+            <span class="fs-6 fw-light"
+              >Don't have an API key? Either leave it as "DEMO_KEY" or visit
+              <a href="https://api.nasa.gov" class="link-light">api.nava.gov</a>
+              to obtain one.</span
+            >
           </div>
           <div class="col-md-1 mt-4 mt-md-0">
             <h2 class="d-none d-md-block">&nbsp;</h2>
@@ -131,10 +136,10 @@
               >
             </button>
           </div>
-          <div class="col-md-3 mt-1 mt-md-0">
+          <div class="col-md-6 mt-1 mt-md-0">
             <h2 class="d-none d-md-block">&nbsp;</h2>
             <button onclick="submit()" class="btn btn-primary w-100">
-              Submit
+              Fetch
             </button>
           </div>
         </div>
@@ -163,21 +168,32 @@
           ></iframe>
         </div>
 
-        <div class="row vh-25" hidden>
-          <div class="col-md-12 overflow-auto mh-100">
-            <p id="explanation" class="font-google-quicksand fs-5"></p>
-          </div>
-        </div>
         <div class="row my-4" id="buttonDiv" hidden>
+          <div class="col-12 mb-2">
+            <div class="row">
+              <div class="col">
+                <h6>Date: <span id="dateTaken"></span></h6>
+              </div>
+              <div class="col" id="copyrightCol">
+                <h6>Copyright: <span id="copyright"></span></h6>
+              </div>
+            </div>
+          </div>
           <div class="col-6">
-            <button class="btn btn-warning w-100" onclick="prevImg()">
+            <button class="btn btn-primary w-100 fs-5" onclick="prevImg()">
               Back
             </button>
           </div>
           <div class="col-6">
-            <button class="btn btn-warning w-100" onclick="nextImg()">
+            <button class="btn btn-primary w-100 fs-5" onclick="nextImg()">
               Next
             </button>
+          </div>
+        </div>
+        <div class="row my-4">
+          <div class="col-md-12" id="explanationDiv" hidden>
+            <h3 class="font-google-quicksand">Explanation</h3>
+            <p id="explanation" class="font-google-quicksand fs-5"></p>
           </div>
         </div>
       </div>

@@ -6,11 +6,17 @@ const mainImage = document.getElementById("mainImage");
 const youtubeFrame = document.getElementById("youtube");
 const explanation = document.getElementById("explanation");
 const buttonDiv = document.getElementById("buttonDiv");
+const copyrightText = document.getElementById("copyright");
+const dateTaken = document.getElementById("dateTaken");
+const copyrightCol = document.getElementById("copyrightCol");
+const explanationDiv = document.getElementById("explanationDiv");
 let today;
 
 const url = new URL("https://api.nasa.gov/planetary/apod");
+const dateOptions = { month: "long", day: "numeric", year: "numeric" };
 let newurl;
 let data;
+let hdImage;
 let count = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -20,6 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
   startDate.value = today;
   endDate.value = today;
 });
+
+function formatDate(dateStr) {
+  const date = new Date(dateStr);
+  const formatDate = date.toLocaleDateString("en-US", dateOptions);
+  return formatDate;
+}
 
 async function paste() {
   const permission = await navigator.permissions.query({
@@ -55,8 +67,10 @@ async function submit() {
     endDate.value;
 
   data = await fetchData(newurl);
+  console.log(data);
   displayImage(0);
   buttonDiv.hidden = false;
+  explanationDiv.hidden = false;
 }
 
 async function fetchData(url) {
@@ -66,11 +80,22 @@ async function fetchData(url) {
 }
 
 function displayImage(imgCount) {
-  const currentImage = data[imgCount]["url"];
-  const currentTitle = data[imgCount]["title"];
-  const currentExplanation = data[imgCount]["explanation"];
+  const current = data[imgCount];
+  const currentImage = current["url"];
+  const currentTitle = current["title"];
+  const currentExplanation = current["explanation"];
+  const currentCopyright = current["copyright"];
+  const currentDate = current["date"];
   imageTitle.innerText = currentTitle;
   explanation.innerText = currentExplanation;
+  if (currentCopyright) {
+    copyrightCol.hidden = false;
+    copyrightText.innerText = currentCopyright.replace(/\n/g, "");
+  } else {
+    copyrightCol.hidden = true;
+  }
+  dateTaken.innerText = formatDate(currentDate);
+
   if (currentImage.includes("youtube.com")) {
     youtubeFrame.src =
       currentImage.replace(/youtube.com/g, "youtube-nocookie.com") +

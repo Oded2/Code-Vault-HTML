@@ -65,13 +65,6 @@ function chooseWordNow() {
 
 let word;
 
-// Temporary;
-// document.addEventListener("DOMContentLoaded", () => {
-//   titleSection.hidden = true;
-//   gameSection.hidden = false;
-//   hintsDiv.hidden = false;
-// });
-
 function chooseWord(min, max) {
   let temp;
   for (let i = 0; i < words.length; i++) {
