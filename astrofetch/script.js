@@ -5,10 +5,13 @@ const imageTitle = document.getElementById("imageTitle");
 const mainImage = document.getElementById("mainImage");
 const youtubeFrame = document.getElementById("youtube");
 const explanation = document.getElementById("explanation");
+const buttonDiv = document.getElementById("buttonDiv");
 let today;
 
 const url = new URL("https://api.nasa.gov/planetary/apod");
 let newurl;
+let data;
+let count = 0;
 
 document.addEventListener("DOMContentLoaded", () => {
   today = new Date().toISOString().split("T")[0];
@@ -51,10 +54,21 @@ async function submit() {
     "&end_date=" +
     endDate.value;
 
-  const temp = await fetchData(newurl);
-  const currentImage = temp[0]["url"];
-  const currentTitle = temp[0]["title"];
-  const currentExplanation = temp[0]["explanation"];
+  data = await fetchData(newurl);
+  displayImage(0);
+  buttonDiv.hidden = false;
+}
+
+async function fetchData(url) {
+  const response = await fetch(url);
+  const data = await response.json();
+  return data;
+}
+
+function displayImage(imgCount) {
+  const currentImage = data[imgCount]["url"];
+  const currentTitle = data[imgCount]["title"];
+  const currentExplanation = data[imgCount]["explanation"];
   imageTitle.innerText = currentTitle;
   explanation.innerText = currentExplanation;
   if (currentImage.includes("youtube.com")) {
@@ -71,8 +85,26 @@ async function submit() {
   }
 }
 
-async function fetchData(url) {
-  const response = await fetch(url);
-  const data = await response.json();
-  return data;
+function changeCount(plus) {
+  if (plus == 1) {
+    count++;
+    if (count >= data.length) {
+      count = 0;
+    }
+  } else if (plus == 0) {
+    count--;
+    if (count < 0) {
+      count = data.length - 1;
+    }
+  }
+}
+
+function nextImg() {
+  changeCount(1);
+
+  displayImage(count);
+}
+function prevImg() {
+  changeCount(0);
+  displayImage(count);
 }

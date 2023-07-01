@@ -90,7 +90,7 @@
     <section>
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-6">
             <h2>Pick the date</h2>
             <input
               min="1995-06-16"
@@ -99,7 +99,7 @@
               class="form-control"
             />
           </div>
-          <div class="col-md-6 mt-md-0 mt-5" hidden>
+          <div class="col-md-6 mt-md-0 mt-5">
             <h2>Pick your end date</h2>
             <input
               min="1995-06-16"
@@ -168,12 +168,16 @@
             <p id="explanation" class="font-google-quicksand fs-5"></p>
           </div>
         </div>
-        <div class="row my-4" hidden>
+        <div class="row my-4" id="buttonDiv" hidden>
           <div class="col-6">
-            <button class="btn btn-warning w-100">Back</button>
+            <button class="btn btn-warning w-100" onclick="prevImg()">
+              Back
+            </button>
           </div>
           <div class="col-6">
-            <button class="btn btn-warning w-100">Next</button>
+            <button class="btn btn-warning w-100" onclick="nextImg()">
+              Next
+            </button>
           </div>
         </div>
       </div>
