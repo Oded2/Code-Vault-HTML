@@ -56,6 +56,8 @@ function loadingImage() {
 }
 
 async function submit() {
+  buttonDiv.hidden = true;
+  explanationDiv.hidden = true;
   loadingImage();
   newurl =
     url +
