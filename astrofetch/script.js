@@ -40,6 +40,7 @@ async function paste() {
   } catch (error) {
     console.error(error);
   }
+  return null;
 }
 
 async function pasteToApi() {
