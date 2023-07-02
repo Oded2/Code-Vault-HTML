@@ -93,6 +93,7 @@
           <div class="col-md-6">
             <h2>Pick your start date</h2>
             <input
+              oninput="changeEnd()"
               min="1995-06-16"
               type="date"
               id="startDate"
@@ -102,11 +103,30 @@
           <div class="col-md-6 mt-md-0 mt-5">
             <h2>Pick your end date</h2>
             <input
+              oninput="changeStart()"
               min="1995-06-16"
               type="date"
               id="endDate"
               class="form-control"
             />
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-md-6"></div>
+          <div class="col-auto">
+            <button class="btn btn-secondary" onclick="changeEndDate(0)">
+              Set to Start Date
+            </button>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-secondary" onclick="changeEndDate(7)">
+              7 Days
+            </button>
+          </div>
+          <div class="col-auto">
+            <button class="btn btn-secondary" onclick="changeEndDate(30)">
+              30 Days
+            </button>
           </div>
         </div>
         <div class="row my-5">

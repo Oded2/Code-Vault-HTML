@@ -27,6 +27,17 @@ document.addEventListener("DOMContentLoaded", () => {
   endDate.value = today;
 });
 
+function getDateAhead(dateString, days) {
+  let date = new Date(dateString);
+  date.setDate(date.getDate() + days);
+
+  let year = date.getFullYear();
+  let month = String(date.getMonth() + 1).padStart(2, "0");
+  let day = String(date.getDate()).padStart(2, "0");
+
+  return year + "-" + month + "-" + day;
+}
+
 function formatDate(dateStr) {
   const date = new Date(dateStr);
   const formatDate = date.toLocaleDateString("en-US", dateOptions);
@@ -54,6 +65,9 @@ function loadingImage() {
 }
 
 async function submit() {
+  if (!validateDates()) {
+    return;
+  }
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
   loadingImage();
@@ -131,4 +145,45 @@ function nextImg() {
 function prevImg() {
   changeCount(0);
   displayImage(count);
+}
+
+function changeEnd() {
+  endDate.min = startDate.value;
+}
+function changeStart() {
+  startDate.max = endDate.value;
+}
+
+function changeEndDate(days) {
+  const oldDate = startDate.value;
+  const newDate = getDateAhead(oldDate, days);
+  if (newDate <= endDate.max) {
+    endDate.value = newDate;
+  } else {
+    endDate.value = endDate.max;
+  }
+}
+
+function validateDates() {
+  if (startDate.value < startDate.min) {
+    alert("Starting date cannot be before " + formatDate("1996-06-16"));
+    return false;
+  }
+  if (startDate.value > startDate.max) {
+    if (startDate.value > today) {
+      alert("Starting date cannot be after today");
+    } else if (startDate.value > startDate.max) {
+      alert("Starting date cannot be after the end date");
+    }
+    return false;
+  }
+  if (endDate.value < endDate.min) {
+    alert("End date cannot be before the starting date");
+    return false;
+  }
+  if (endDate.value > endDate.max) {
+    alert("End date cannot be after today");
+    return false;
+  }
+  return true;
 }
