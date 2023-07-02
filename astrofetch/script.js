@@ -3,7 +3,7 @@ const startDate = document.getElementById("startDate");
 const endDate = document.getElementById("endDate");
 const imageTitle = document.getElementById("imageTitle");
 const mainImage = document.getElementById("mainImage");
-const youtubeFrame = document.getElementById("youtube");
+const videoFrame = document.getElementById("youtube");
 const explanation = document.getElementById("explanation");
 const buttonDiv = document.getElementById("buttonDiv");
 const copyrightText = document.getElementById("copyright");
@@ -122,6 +122,7 @@ function displayImage(imgCount) {
   const currentExplanation = current["explanation"];
   const currentCopyright = current["copyright"];
   const currentDate = current["date"];
+  const currentmediaType = current["media_type"];
   imageTitle.innerText = currentTitle;
   explanation.innerText = currentExplanation;
   if (currentCopyright) {
@@ -131,15 +132,14 @@ function displayImage(imgCount) {
     copyrightCol.hidden = true;
   }
   dateTaken.innerText = formatDate(currentDate);
-
-  if (currentImage.includes("youtube.com")) {
-    youtubeFrame.src =
+  if (currentmediaType == "video") {
+    videoFrame.src =
       currentImage.replace(/youtube.com/g, "youtube-nocookie.com") +
       "&autoplay=1&mute=1";
-    youtubeFrame.hidden = false;
+    videoFrame.hidden = false;
     mainImage.hidden = true;
   } else {
-    youtubeFrame.hidden = true;
+    videoFrame.hidden = true;
     mainImage.hidden = false;
     mainImage.src = currentImage;
     mainImage.alt = currentTitle;
