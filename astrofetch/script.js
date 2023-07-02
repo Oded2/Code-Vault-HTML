@@ -17,7 +17,7 @@ const dateOptions = { month: "long", day: "numeric", year: "numeric" };
 let newurl;
 let data;
 let hdImage;
-let count = 0;
+let count;
 
 document.addEventListener("DOMContentLoaded", () => {
   today = new Date().toISOString().split("T")[0];
@@ -68,6 +68,7 @@ async function submit() {
   if (!validateDates()) {
     return;
   }
+  count = 0;
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
   loadingImage();
