@@ -55,7 +55,10 @@ async function paste() {
 }
 
 async function pasteToApi() {
-  apikey.value = await paste();
+  const clip = await paste();
+  if (clip) {
+    apikey.value = clip;
+  }
 }
 
 function loadingImage() {
