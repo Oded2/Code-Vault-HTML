@@ -67,6 +67,12 @@ function loadingImage() {
   mainImage.alt = "Loading image";
 }
 
+function resetImage() {
+  imageTitle.innerText = "Nasa Logo";
+  mainImage.src = "../HomeAssets/images/svg/NASA.svg";
+  mainImage.alt = "Picture of the NASA Logo";
+}
+
 async function submit() {
   if (!validateDates()) {
     return;
@@ -85,6 +91,11 @@ async function submit() {
     endDate.value;
 
   data = await fetchData(newurl);
+  if (!data) {
+    resetImage();
+    return;
+  }
+
   displayImage(0);
   buttonDiv.hidden = false;
   explanationDiv.hidden = false;
@@ -92,6 +103,14 @@ async function submit() {
 
 async function fetchData(url) {
   const response = await fetch(url);
+  if (response.status != 200) {
+    if (response.status == 403) {
+      alert("Invalid API key");
+    } else {
+      alert("Error");
+    }
+    return false;
+  }
   const data = await response.json();
   return data;
 }
