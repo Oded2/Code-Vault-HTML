@@ -13,6 +13,7 @@ const copyrightCol = document.getElementById("copyrightCol");
 const explanationDiv = document.getElementById("explanationDiv");
 const hiddenImages = document.getElementById("hiddenImages");
 const preload = document.getElementById("preload");
+const noImage = document.getElementById("noImage");
 let today;
 const url = new URL("https://api.nasa.gov/planetary/apod");
 const dateOptions = { month: "long", day: "numeric", year: "numeric" };
@@ -117,7 +118,7 @@ async function fetchData(url) {
   return data;
 }
 
-function loadImages(startingNum, amount) {
+function preloadImages(startingNum, amount) {
   hiddenImages.innerHTML = "";
   let max = startingNum + amount;
   if (startingNum + amount > data.length) {
@@ -136,8 +137,9 @@ function loadImages(startingNum, amount) {
 
 function displayImage(imgCount) {
   if (preload.checked) {
-    loadImages(imgCount, 50);
+    preloadImages(imgCount, 50);
   }
+
   const current = data[imgCount];
   const currentImage = current["url"];
   const currentTitle = current["title"];
@@ -158,13 +160,19 @@ function displayImage(imgCount) {
     videoFrame.src =
       currentImage.replace(/youtube.com/g, "youtube-nocookie.com") +
       "&autoplay=1&mute=1";
-    videoFrame.hidden = false;
+    noImage.hidden = true;
     mainImage.hidden = true;
-  } else {
+    videoFrame.hidden = false;
+  } else if (currentmediaType == "image") {
+    noImage.hidden = true;
     videoFrame.hidden = true;
     mainImage.hidden = false;
     mainImage.src = currentImage;
     mainImage.alt = currentTitle;
+  } else {
+    videoFrame.hidden = true;
+    mainImage.hidden = true;
+    noImage.hidden = false;
   }
 }
 
