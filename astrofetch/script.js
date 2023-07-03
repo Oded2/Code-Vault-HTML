@@ -1,3 +1,4 @@
+const body = document.body;
 const apikey = document.getElementById("apiKey");
 const startDate = document.getElementById("startDate");
 const endDate = document.getElementById("endDate");
@@ -10,8 +11,9 @@ const copyrightText = document.getElementById("copyright");
 const dateTaken = document.getElementById("dateTaken");
 const copyrightCol = document.getElementById("copyrightCol");
 const explanationDiv = document.getElementById("explanationDiv");
+const hiddenImages = document.getElementById("hiddenImages");
+const preload = document.getElementById("preload");
 let today;
-
 const url = new URL("https://api.nasa.gov/planetary/apod");
 const dateOptions = { month: "long", day: "numeric", year: "numeric" };
 let newurl;
@@ -115,7 +117,27 @@ async function fetchData(url) {
   return data;
 }
 
+function loadImages(startingNum, amount) {
+  hiddenImages.innerHTML = "";
+  let max = startingNum + amount;
+  if (startingNum + amount > data.length) {
+    max = data.length;
+  }
+  for (let i = startingNum; i < max; i++) {
+    const current = data[i];
+    if (current["media_type"] == "image") {
+      const image = current["url"];
+      const element = document.createElement("img");
+      element.src = image;
+      hiddenImages.append(element);
+    }
+  }
+}
+
 function displayImage(imgCount) {
+  if (preload.checked) {
+    loadImages(imgCount, 50);
+  }
   const current = data[imgCount];
   const currentImage = current["url"];
   const currentTitle = current["title"];
