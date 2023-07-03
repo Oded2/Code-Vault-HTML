@@ -92,7 +92,7 @@ async function submit() {
     startDate.value +
     "&end_date=" +
     endDate.value;
-
+  console.log(newurl);
   data = await fetchData(newurl);
   if (!data) {
     resetImage();
@@ -108,7 +108,6 @@ async function submit() {
 
 async function fetchData(url) {
   const response = await fetch(url);
-  console.log("Fetching", response.url);
   if (response.status != 200) {
     if (response.status == 403) {
       alert("Invalid API key");
