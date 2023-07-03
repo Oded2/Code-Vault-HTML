@@ -98,7 +98,9 @@ async function submit() {
     resetImage();
     return;
   }
-  preloadImages();
+  if (preload.checked) {
+    preloadImages();
+  }
   displayImage(0);
   buttonDiv.hidden = false;
   explanationDiv.hidden = false;
