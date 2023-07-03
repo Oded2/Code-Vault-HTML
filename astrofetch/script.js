@@ -98,7 +98,7 @@ async function submit() {
     resetImage();
     return;
   }
-
+  preloadImages();
   displayImage(0);
   buttonDiv.hidden = false;
   explanationDiv.hidden = false;
@@ -118,13 +118,9 @@ async function fetchData(url) {
   return data;
 }
 
-function preloadImages(startingNum, amount) {
+function preloadImages() {
   hiddenImages.innerHTML = "";
-  let max = startingNum + amount;
-  if (startingNum + amount > data.length) {
-    max = data.length;
-  }
-  for (let i = startingNum; i < max; i++) {
+  for (let i = 0; i < data.length; i++) {
     const current = data[i];
     if (current["media_type"] == "image") {
       const image = current["url"];
@@ -136,10 +132,6 @@ function preloadImages(startingNum, amount) {
 }
 
 function displayImage(imgCount) {
-  if (preload.checked) {
-    preloadImages(imgCount, 50);
-  }
-
   const current = data[imgCount];
   const currentImage = current["url"];
   const currentTitle = current["title"];
