@@ -38,7 +38,7 @@ function getNumber() {
   document.getElementById("userNum").disabled = false;
   document.getElementById("reveal-btn").disabled = false;
   document.getElementById("reveal-btn").classList.remove("btn-secondary");
-  document.getElementById("reveal-btn").classList.add("btn-warning");
+  document.getElementById("reveal-btn").classList.add("btn-info");
   document.getElementById("counter").hidden = false;
 }
 function check() {
@@ -99,6 +99,7 @@ function check() {
 
 function reveal() {
   document.getElementById("userNum").value = winningNum;
+  check();
 }
 
 function restart() {
@@ -120,7 +121,7 @@ function resetGame() {
   document.getElementById("userNum").disabled = true;
   document.getElementById("reveal-btn").disabled = true;
   document.getElementById("reveal-btn").classList.add("btn-secondary");
-  document.getElementById("reveal-btn").classList.remove("btn-warning");
+  document.getElementById("reveal-btn").classList.remove("btn-info");
   document.getElementById("counter").hidden = true;
   document.getElementById("attempted").innerText = "";
 
