@@ -99,6 +99,7 @@ function check() {
 function reveal() {
   document.getElementById("userNum").value = winningNum;
   check();
+  document.getElementById("userNum").value = winningNum;
 }
 
 function restart() {
