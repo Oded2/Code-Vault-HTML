@@ -109,6 +109,8 @@ async function submit() {
   }
   if (preload.checked) {
     preloadImages();
+  } else {
+    hiddenImages.innerHTML = "";
   }
   displayImage(0);
   buttonDiv.hidden = false;
@@ -130,7 +132,6 @@ async function fetchData(url) {
 }
 
 function preloadImages() {
-  hiddenImages.innerHTML = "";
   for (let i = 0; i < data.length; i++) {
     const current = data[i];
     if (current["media_type"] == "image") {
