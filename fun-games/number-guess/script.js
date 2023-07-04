@@ -88,7 +88,6 @@ function check() {
   } else if (userNum > winningNum) {
     lowerOrHigher.innerText = "Too High";
   } else if (userNum == winningNum) {
-    // User wins the game
     restart();
     lowerOrHigher.innerText = "Correct!";
     div.classList.remove("bg-warning");
