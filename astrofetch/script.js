@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", () => {
   endDate.value = today;
 });
 
+function removeLineBreak(string) {
+  string = string.replace(/\n/g, "");
+  string = string.replace(/\r/g, "");
+  return string;
+}
+
 function getDateAhead(dateString, days) {
   let date = new Date(dateString);
   date.setDate(date.getDate() + days);
@@ -83,6 +89,9 @@ async function submit() {
   count = 0;
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
+  videoFrame.hidden = true;
+  noImage.hidden = true;
+  mainImage.hidden = false;
   loadingImage();
   newurl =
     url +
@@ -142,10 +151,10 @@ function displayImage(imgCount) {
   const currentDate = current["date"];
   const currentmediaType = current["media_type"];
   imageTitle.innerText = currentTitle;
-  explanation.innerText = currentExplanation;
+  explanation.innerText = removeLineBreak(currentExplanation);
   if (currentCopyright) {
     copyrightCol.hidden = false;
-    copyrightText.innerText = currentCopyright.replace(/\n/g, "");
+    copyrightText.innerText = removeLineBreak(currentCopyright);
   } else {
     copyrightCol.hidden = true;
   }
