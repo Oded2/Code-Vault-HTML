@@ -217,8 +217,8 @@ function revealLetter() {
       break;
     }
   }
-  indexes[indexes.length] = r;
-
+  userGuess.value = word[r];
+  check();
   fill();
   isWin();
 }
