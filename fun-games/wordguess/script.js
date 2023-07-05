@@ -209,11 +209,9 @@ function borderRemove() {
 
 function revealLetter() {
   let r;
-  let runs = 0;
   while (true) {
-    runs++;
     r = Math.floor(Math.random() * word.length);
-    if (!indexes.includes(r) || runs >= 100) {
+    if (!indexes.includes(r)) {
       break;
     }
   }
