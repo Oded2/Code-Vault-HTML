@@ -219,6 +219,7 @@ function changeEndDate(days) {
   } else {
     endDate.value = endDate.max;
   }
+  changeStart();
 }
 
 function validateDates() {
