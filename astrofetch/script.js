@@ -108,6 +108,7 @@ async function submit() {
   if (!validateDates()) {
     return;
   }
+  loadingImage();
   count = 0;
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
@@ -122,7 +123,7 @@ async function submit() {
   };
   newurl = addParams(url, params);
   console.log(newurl);
-  loadingImage();
+
   data = await fetchData(newurl);
   if (!data) {
     resetImage();
