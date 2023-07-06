@@ -100,7 +100,7 @@ async function submit() {
   count = 0;
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
-  videoFrame.hidden = true;
+  iframeContainer.hidden = true;
   noImage.hidden = true;
   mainImage.hidden = false;
   loadingImage();
@@ -187,19 +187,16 @@ function displayImage(imgCount) {
     videoFrame.src = newSrc;
     noImage.hidden = true;
     mainImage.hidden = true;
-    videoFrame.hidden = false;
     iframeContainer.hidden = false;
   } else if (currentmediaType == "image") {
     noImage.hidden = true;
     iframeContainer.hidden = true;
-    videoFrame.hidden = true;
     mainImage.hidden = false;
     mainImage.src = currentApod;
     mainImage.alt = currentTitle;
   } else {
     console.debug(current);
     iframeContainer.hidden = true;
-    videoFrame.hidden = true;
     mainImage.hidden = true;
     noImage.hidden = false;
   }
