@@ -17,6 +17,8 @@ const noImage = document.getElementById("noImage");
 let today;
 const url = new URL("https://api.nasa.gov/planetary/apod");
 const dateOptions = { month: "long", day: "numeric", year: "numeric" };
+const nasaLogo = "../HomeAssets/images/svg/NASA.svg";
+const loadingGifPath = "../HomeAssets/gif/loading.gif";
 let newurl;
 let data;
 let hdImage;
@@ -29,7 +31,16 @@ document.addEventListener("DOMContentLoaded", () => {
   startDate.value = today;
   endDate.value = today;
 });
+function addParams(link, params) {
+  link = new URL(link);
+  let value;
+  for (key in params) {
+    value = params[key];
 
+    link.searchParams.append(key, value);
+  }
+  return link.toString();
+}
 function removeLineBreak(string) {
   string = string.replace(/\n/g, "");
   string = string.replace(/\r/g, "");
@@ -39,7 +50,6 @@ function removeLineBreak(string) {
 function getDateAhead(dateString, days) {
   let date = new Date(dateString);
   date.setDate(date.getDate() + days);
-
   let year = date.getFullYear();
   let month = String(date.getMonth() + 1).padStart(2, "0");
   let day = String(date.getDate()).padStart(2, "0");
@@ -72,13 +82,13 @@ async function pasteToApi() {
 
 function loadingImage() {
   imageTitle.innerText = "Loading image...";
-  mainImage.src = "../HomeAssets/gif/loading.gif";
+  mainImage.src = loadingGifPath;
   mainImage.alt = "Loading image";
 }
 
 function resetImage() {
   imageTitle.innerText = "Nasa Logo";
-  mainImage.src = "../HomeAssets/images/svg/NASA.svg";
+  mainImage.src = nasaLogo;
   mainImage.alt = "Picture of the NASA Logo";
 }
 
@@ -93,14 +103,12 @@ async function submit() {
   noImage.hidden = true;
   mainImage.hidden = false;
   loadingImage();
-  newurl =
-    url +
-    "?api_key=" +
-    apikey.value +
-    "&start_date=" +
-    startDate.value +
-    "&end_date=" +
-    endDate.value;
+  const params = {
+    api_key: apikey.value,
+    start_date: startDate.value,
+    end_date: endDate.value,
+  };
+  newurl = addParams(url, params);
   console.log(newurl);
   data = await fetchData(newurl);
   if (!data) {
@@ -145,7 +153,7 @@ function preloadImages() {
 
 function displayImage(imgCount) {
   const current = data[imgCount];
-  const currentImage = current["url"];
+  const currentApod = current["url"];
   const currentTitle = current["title"];
   const currentExplanation = current["explanation"];
   const currentCopyright = current["copyright"];
@@ -161,9 +169,18 @@ function displayImage(imgCount) {
   }
   dateTaken.innerText = formatDate(currentDate);
   if (currentmediaType == "video") {
-    videoFrame.src =
-      currentImage.replace(/youtube.com/g, "youtube-nocookie.com") +
-      "&autoplay=1&mute=1";
+    let newSrc;
+    const youtubeParams = { autoplay: 1, mute: 1 };
+    const vimeoParams = { autoplay: 1, muted: 1, pip: 1 };
+    if (currentApod.includes("youtube.com")) {
+      newSrc = currentApod.replace(/youtube.com/g, "youtube-nocookie.com");
+      newSrc = addParams(newSrc, youtubeParams);
+    } else if (currentApod.includes("vimeo.com")) {
+      newSrc = addParams(currentApod, vimeoParams);
+    } else {
+      newSrc = currentApod;
+    }
+    videoFrame.src = newSrc;
     noImage.hidden = true;
     mainImage.hidden = true;
     videoFrame.hidden = false;
@@ -171,9 +188,10 @@ function displayImage(imgCount) {
     noImage.hidden = true;
     videoFrame.hidden = true;
     mainImage.hidden = false;
-    mainImage.src = currentImage;
+    mainImage.src = currentApod;
     mainImage.alt = currentTitle;
   } else {
+    console.debug(current);
     videoFrame.hidden = true;
     mainImage.hidden = true;
     noImage.hidden = false;
