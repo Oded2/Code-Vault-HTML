@@ -19,6 +19,7 @@ const url = new URL("https://api.nasa.gov/planetary/apod");
 const dateOptions = { month: "long", day: "numeric", year: "numeric" };
 const nasaLogo = "../HomeAssets/images/svg/NASA.svg";
 const loadingGifPath = "../HomeAssets/gif/loading.gif";
+const iframeContainer = document.getElementById("iFrameContainer");
 let newurl;
 let data;
 let hdImage;
@@ -130,8 +131,10 @@ async function fetchData(url) {
   if (response.status != 200) {
     if (response.status == 403) {
       alert("Invalid API key");
+    } else if (response.status == 429) {
+      alert("Too many requests, try using a different API key");
     } else {
-      alert("Error");
+      alert("Error. Error code: " + response.status);
     }
     return false;
   }
@@ -185,14 +188,17 @@ function displayImage(imgCount) {
     noImage.hidden = true;
     mainImage.hidden = true;
     videoFrame.hidden = false;
+    iframeContainer.hidden = false;
   } else if (currentmediaType == "image") {
     noImage.hidden = true;
+    iframeContainer.hidden = true;
     videoFrame.hidden = true;
     mainImage.hidden = false;
     mainImage.src = currentApod;
     mainImage.alt = currentTitle;
   } else {
     console.debug(current);
+    iframeContainer.hidden = true;
     videoFrame.hidden = true;
     mainImage.hidden = true;
     noImage.hidden = false;
