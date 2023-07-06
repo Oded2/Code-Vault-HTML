@@ -146,6 +146,7 @@ function preloadImages() {
       const image = current["url"];
       const element = document.createElement("img");
       element.src = image;
+      element.classList.add("w-75");
       hiddenImages.append(element);
     }
   }
