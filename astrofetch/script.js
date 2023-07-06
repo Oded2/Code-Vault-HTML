@@ -97,6 +97,7 @@ async function submit() {
   if (!validateDates()) {
     return;
   }
+  hiddenImages.innerHTML = "";
   count = 0;
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
@@ -118,8 +119,6 @@ async function submit() {
   }
   if (preload.checked) {
     preloadImages();
-  } else {
-    hiddenImages.innerHTML = "";
   }
   displayImage(0);
   buttonDiv.hidden = false;
@@ -149,7 +148,8 @@ function preloadImages() {
       const image = current["url"];
       const element = document.createElement("img");
       element.src = image;
-      element.classList.add("w-75");
+      element.style.minWidth = "51%";
+      element.style.maxWidth = "100%";
       hiddenImages.append(element);
     }
   }
