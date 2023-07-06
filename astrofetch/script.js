@@ -51,7 +51,7 @@ function removeLineBreak(string) {
 function getDateAhead(dateString, days) {
   let date = new Date(dateString);
   date.setDate(date.getDate() + days);
-  let year = date.getFullYear();
+  let year = String(date.getFullYear()).padStart(4, "0");
   let month = String(date.getMonth() + 1).padStart(2, "0");
   let day = String(date.getDate()).padStart(2, "0");
 
