@@ -3,8 +3,6 @@ const apikey = document.getElementById("apiKey");
 const startDate = document.getElementById("startDate");
 const endDate = document.getElementById("endDate");
 const imageTitle = document.getElementById("imageTitle");
-const mainImage = document.getElementById("mainImage");
-const videoFrame = document.getElementById("youtube");
 const explanation = document.getElementById("explanation");
 const buttonDiv = document.getElementById("buttonDiv");
 const copyrightText = document.getElementById("copyright");
@@ -12,14 +10,15 @@ const dateTaken = document.getElementById("dateTaken");
 const copyrightCol = document.getElementById("copyrightCol");
 const explanationDiv = document.getElementById("explanationDiv");
 const hiddenImages = document.getElementById("hiddenImages");
-const preload = document.getElementById("preload");
 const noImage = document.getElementById("noImage");
+const imageContainer = document.getElementById("imageContainer");
 let today;
 const url = new URL("https://api.nasa.gov/planetary/apod");
 const dateOptions = { month: "long", day: "numeric", year: "numeric" };
-const nasaLogo = "../HomeAssets/images/svg/NASA.svg";
+const nasaLogoPath = "../HomeAssets/images/svg/NASA.svg";
 const loadingGifPath = "../HomeAssets/gif/loading.gif";
 const iframeContainer = document.getElementById("iFrameContainer");
+const elementPrefix = "img";
 let newurl;
 let data;
 let hdImage;
@@ -81,30 +80,41 @@ async function pasteToApi() {
   }
 }
 
+function changeImage(imgPath, imgTitle) {
+  clearDivs();
+  const newImg = document.createElement("img");
+  newImg.src = imgPath;
+  newImg.alt = imgTitle;
+  newImg.classList.add("img-fluid", "object-fit-contain", "w-100", "h-100");
+  imageContainer.appendChild(newImg);
+}
+
 function loadingImage() {
   imageTitle.innerText = "Loading image...";
-  mainImage.src = loadingGifPath;
-  mainImage.alt = "Loading image";
+  changeImage(loadingGifPath, "Loading Image");
 }
 
 function resetImage() {
   imageTitle.innerText = "Nasa Logo";
-  mainImage.src = nasaLogo;
-  mainImage.alt = "Picture of the NASA Logo";
+  changeImage(nasaLogoPath, "Nasa Logo");
+}
+
+function clearDivs() {
+  imageContainer.innerHTML = "";
+  iframeContainer.innerHTML = "";
 }
 
 async function submit() {
   if (!validateDates()) {
     return;
   }
-  hiddenImages.innerHTML = "";
   count = 0;
   buttonDiv.hidden = true;
   explanationDiv.hidden = true;
   iframeContainer.hidden = true;
   noImage.hidden = true;
-  mainImage.hidden = false;
-  loadingImage();
+  imageContainer.hidden = false;
+
   const params = {
     api_key: apikey.value,
     start_date: startDate.value,
@@ -112,15 +122,15 @@ async function submit() {
   };
   newurl = addParams(url, params);
   console.log(newurl);
+  loadingImage();
   data = await fetchData(newurl);
   if (!data) {
     resetImage();
     return;
   }
-  if (preload.checked) {
-    preloadImages();
-  }
+  insertImages();
   displayImage(0);
+
   buttonDiv.hidden = false;
   explanationDiv.hidden = false;
 }
@@ -141,28 +151,51 @@ async function fetchData(url) {
   return data;
 }
 
-function preloadImages() {
+function insertImages() {
+  clearDivs();
   for (let i = 0; i < data.length; i++) {
     const current = data[i];
-    if (current["media_type"] == "image") {
-      const image = current["url"];
-      const element = document.createElement("img");
-      element.src = image;
-      element.style.minWidth = "51%";
-      element.style.maxWidth = "100%";
-      hiddenImages.append(element);
+    const currentApod = current["url"];
+    const currentTitle = current["title"];
+    const currentMediaType = current["media_type"];
+    if (currentMediaType == "other") {
+      continue;
     }
+    let newElement;
+    if (currentMediaType == "image") {
+      newElement = document.createElement("img");
+      newElement.src = currentApod;
+      newElement.alt = currentTitle;
+      newElement.classList.add("img-fluid", "object-fit-contain");
+      imageContainer.appendChild(newElement);
+    } else if (currentMediaType == "video") {
+      const vimeoParams = { pip: 1, dnt: 1 };
+      let newUrl = currentApod;
+      if (currentApod.includes("youtube.com")) {
+        newUrl = currentApod.replace(/youtube.com/g, "youtube-nocookie.com");
+      } else if (currentApod.includes("vimeo.com")) {
+        newUrl = addParams(currentApod, vimeoParams);
+      }
+      newElement = document.createElement("iframe");
+      newElement.src = newUrl;
+      newElement.allow =
+        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      iframeContainer.appendChild(newElement);
+    }
+    newElement.classList.add("w-100", "h-100");
+    newElement.id = elementPrefix + i;
+    newElement.hidden = true;
   }
 }
 
 function displayImage(imgCount) {
   const current = data[imgCount];
-  const currentApod = current["url"];
   const currentTitle = current["title"];
   const currentExplanation = current["explanation"];
   const currentCopyright = current["copyright"];
   const currentDate = current["date"];
-  const currentmediaType = current["media_type"];
+  const currentMediaType = current["media_type"];
+
   imageTitle.innerText = currentTitle;
   explanation.innerText = removeLineBreak(currentExplanation);
   if (currentCopyright) {
@@ -172,37 +205,32 @@ function displayImage(imgCount) {
     copyrightCol.hidden = true;
   }
   dateTaken.innerText = formatDate(currentDate);
-  if (currentmediaType == "video") {
-    let newSrc;
-    const youtubeParams = { autoplay: 1, mute: 1 };
-    const vimeoParams = { autoplay: 1, muted: 1, pip: 1 };
-    if (currentApod.includes("youtube.com")) {
-      newSrc = currentApod.replace(/youtube.com/g, "youtube-nocookie.com");
-      newSrc = addParams(newSrc, youtubeParams);
-    } else if (currentApod.includes("vimeo.com")) {
-      newSrc = addParams(currentApod, vimeoParams);
-    } else {
-      newSrc = currentApod;
-    }
-    videoFrame.src = newSrc;
+  visibleElement(imgCount, false);
+  if (currentMediaType == "video") {
     noImage.hidden = true;
-    mainImage.hidden = true;
+    imageContainer.hidden = true;
     iframeContainer.hidden = false;
-  } else if (currentmediaType == "image") {
+  } else if (currentMediaType == "image") {
     noImage.hidden = true;
     iframeContainer.hidden = true;
-    mainImage.hidden = false;
-    mainImage.src = currentApod;
-    mainImage.alt = currentTitle;
+    imageContainer.hidden = false;
   } else {
     console.debug(current);
     iframeContainer.hidden = true;
-    mainImage.hidden = true;
+    imageContainer.hidden = true;
     noImage.hidden = false;
   }
 }
 
+function visibleElement(elementNum, hidden) {
+  const mediaType = data[elementNum]["media_type"];
+  if (mediaType != "other") {
+    document.getElementById(elementPrefix + elementNum).hidden = hidden;
+  }
+}
+
 function changeCount(plus) {
+  visibleElement(count, true);
   if (plus == 1) {
     count++;
     if (count >= data.length) {
