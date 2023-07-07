@@ -12,6 +12,7 @@ const explanationDiv = document.getElementById("explanationDiv");
 const hiddenImages = document.getElementById("hiddenImages");
 const noImage = document.getElementById("noImage");
 const imageContainer = document.getElementById("imageContainer");
+const iframe = document.getElementById("youtube");
 let today;
 const url = new URL("https://api.nasa.gov/planetary/apod");
 const dateOptions = { month: "long", day: "numeric", year: "numeric" };
@@ -101,7 +102,6 @@ function resetImage() {
 
 function clearDivs() {
   imageContainer.innerHTML = "";
-  iframeContainer.innerHTML = "";
 }
 
 async function submit() {
@@ -137,7 +137,13 @@ async function submit() {
 }
 
 async function fetchData(url) {
-  const response = await fetch(url);
+  let response;
+  try {
+    response = await fetch(url);
+  } catch {
+    alert("Unknown error.");
+    return false;
+  }
   if (response.status != 200) {
     if (response.status == 403) {
       alert("Invalid API key");
@@ -159,30 +165,17 @@ function insertImages() {
     const currentApod = current["url"];
     const currentTitle = current["title"];
     const currentMediaType = current["media_type"];
-    if (currentMediaType == "other") {
+    if (currentMediaType != "image") {
       continue;
     }
+
     let newElement;
-    if (currentMediaType == "image") {
-      newElement = document.createElement("img");
-      newElement.src = currentApod;
-      newElement.alt = currentTitle;
-      newElement.classList.add("img-fluid", "object-fit-contain");
-      imageContainer.appendChild(newElement);
-    } else if (currentMediaType == "video") {
-      const vimeoParams = { pip: 1, dnt: 1 };
-      let newUrl = currentApod;
-      if (currentApod.includes("youtube.com")) {
-        newUrl = currentApod.replace(/youtube.com/g, "youtube-nocookie.com");
-      } else if (currentApod.includes("vimeo.com")) {
-        newUrl = addParams(currentApod, vimeoParams);
-      }
-      newElement = document.createElement("iframe");
-      newElement.src = newUrl;
-      newElement.allow =
-        "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-      iframeContainer.appendChild(newElement);
-    }
+
+    newElement = document.createElement("img");
+    newElement.src = currentApod;
+    newElement.alt = currentTitle;
+    newElement.classList.add("img-fluid", "object-fit-contain");
+    imageContainer.appendChild(newElement);
     newElement.classList.add("w-100", "h-100");
     newElement.id = elementPrefix + i;
     newElement.hidden = true;
@@ -192,6 +185,7 @@ function insertImages() {
 function displayImage(imgCount) {
   const current = data[imgCount];
   const currentTitle = current["title"];
+  const currentUrl = current["url"];
   const currentExplanation = current["explanation"];
   const currentCopyright = current["copyright"];
   const currentDate = current["date"];
@@ -206,12 +200,14 @@ function displayImage(imgCount) {
     copyrightCol.hidden = true;
   }
   dateTaken.innerText = formatDate(currentDate);
-  visibleElement(imgCount, false);
+
   if (currentMediaType == "video") {
+    showVideo(currentUrl);
     noImage.hidden = true;
     imageContainer.hidden = true;
     iframeContainer.hidden = false;
   } else if (currentMediaType == "image") {
+    showImage(imgCount, false);
     noImage.hidden = true;
     iframeContainer.hidden = true;
     imageContainer.hidden = false;
@@ -223,15 +219,31 @@ function displayImage(imgCount) {
   }
 }
 
-function visibleElement(elementNum, hidden) {
+function showVideo(originalLink) {
+  const youtubeParams = { autoplay: 1, mute: 1 };
+  const vimeoParams = { autoplay: 1, muted: 1, pip: 1 };
+
+  let newSrc = originalLink;
+  if (newSrc.includes("youtube.com")) {
+    newSrc = addParams(newSrc, youtubeParams).replace(
+      /youtube.com/g,
+      "youtube-nocookie.com"
+    );
+  } else if (newSrc.includes("vimeo.com")) {
+    newSrc = addParams(newSrc, vimeoParams);
+  }
+  iframe.src = newSrc;
+}
+
+function showImage(elementNum, hide) {
   const mediaType = data[elementNum]["media_type"];
-  if (mediaType != "other") {
-    document.getElementById(elementPrefix + elementNum).hidden = hidden;
+  if (mediaType == "image") {
+    document.getElementById(elementPrefix + elementNum).hidden = hide;
   }
 }
 
 function changeCount(plus) {
-  visibleElement(count, true);
+  showImage(count, true);
   if (plus == 1) {
     count++;
     if (count >= data.length) {
