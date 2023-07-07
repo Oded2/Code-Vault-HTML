@@ -41,6 +41,11 @@
     height: 75vh !important;
   }
 }
+@media (max-width: 576px) {
+  .vh-rsm-10 {
+    height: 10vh !important;
+  }
+}
 
 .d-flex-center {
   display: flex !important;
