@@ -1,6 +1,8 @@
 # Code Vault
 
-This repository contains random projects created for fun. Each project is built using HTML, CSS, and JavaScript and offers unique features and functionalities. You can check out the website at https://oded.benamotz.com.
+## This repository is no longer being maintained, and is being replaced by the [newer version](https://github.com/Oded2/Code-Vault) using Svelte.
+
+This repository contains random projects created for fun. Each project is built using HTML, CSS, and JavaScript and offers unique features and functionalities.
 
 ## Installation
 
